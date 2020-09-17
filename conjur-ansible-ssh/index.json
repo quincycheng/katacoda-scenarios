@@ -1,5 +1,5 @@
 {
-  "title": "WIP - Using Conjur to secure SSH secrets for Ansible",
+  "title": "WIP Using Conjur to secure SSH secrets for Ansible",
   "description": "Learn how to retreive SSH secrets from Conjur for Ansible connecting to multiple hosts",
   "icon": "fa-redhat",
   "details": {
@@ -49,6 +49,6 @@
     "uilayout": "terminal-terminal"
   },
   "backend": {
-    "imageid": "conjur-ansible-ssh"
+    "imageid": "conjur-conjur-ansible-ssh"
   }
 }
