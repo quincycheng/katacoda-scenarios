@@ -1,5 +1,4 @@
 #System Update
 
 apt-get update
-apt-get clean
-
+apt-get upgrade
