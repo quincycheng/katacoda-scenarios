@@ -1,4 +1,4 @@
 #System Update
 
 apt-get update
-apt-get upgrade
+yes | apt-get upgrade
