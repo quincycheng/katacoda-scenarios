@@ -3,6 +3,6 @@ It will take a moments
 
 ```
 cd conjur
-./setupConjur.sh https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/`{{execute}}
+./setupConjur.sh https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/
 cd ..
-```
+```{{execute}}
