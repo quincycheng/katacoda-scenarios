@@ -1,14 +1,8 @@
 
 
-### To install Ansible:
+### Verify Ansible
 
-```
-apt-get update
-apt-add-repository --yes --update ppa:ansible/ansible
-apt-get install ansible sshpass -y
-export ANSIBLE_HOST_KEY_CHECKING=False
-```{{execute HOST1}}
+Ansible has been installed for you in this environment.   
+To verify the installation, execute:
 
-### To verify the installation
-
-`ansible -version`{{execute HOST1}}
+`ansible --version`{{execute HOST1}}
