@@ -1,0 +1,64 @@
+{
+    "title": "[WIP] Securing Jenkins using Conjur by Jenkins Conjur Credential plugin",
+    "description": "Learn how to configure Jenkins Conjur Credential plugin to retrieve secrets & secure the pipelines",
+    "difficulty": "Intermediate",
+    "time": "15-20 minutes",
+    "icon":"fa-jenkins",
+    "details": {
+        "steps": [
+            {
+                "title": "Prerequisites",
+                "text": "prerequisites.md"
+            },
+            {
+                "title": "Setup Jenkins",
+                "text": "jenkins.md"
+            },
+            {
+                "title": "Setup Conjur",
+                "text": "conjur.md"
+            },
+            {
+                "title": "Conjur Policies",
+                "text": "policy.md"
+            },            
+            {
+                "title": "Certificate Preparation",
+                "text": "certificate.md"
+            },
+            {
+                "title": "Configure Plugin",
+                "text": "plugin.md"
+            },
+            {
+                "title": "Configure Folder",
+                "text": "folder.md"
+            },
+            {
+                "title": "From Pipeline Scripts",
+                "text": "script.md"
+            },
+            {
+                "title": "From Freestyle Projects",
+                "text": "project.md"
+            }
+        ],
+        "intro": {
+            "text": "intro.md",
+            "courseData": "courseBase.sh",
+            "credits": ""
+        },
+        "finish": {
+            "text": "finish.md"
+        },
+    },
+    "environment": {
+      "showdashboard": true,
+      "dashboards": [{"name": "Conjur", "port": 8080}, {"name": "Jenkins", "port": 8000}],
+        "uilayout": "terminal-iframe",
+        "uimessage1": "\u001b[32mWelcome to Conjur Jenkins tutorial.\u001b[m\r\n"
+    },
+    "backend": {
+        "imageid": "conjur-jenkins"
+    }
+}
