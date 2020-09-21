@@ -2,17 +2,17 @@ The sample policies have been prepared for you.
 
 **Root policy**
 
-Run `cat conjur.yml`{{execute}} to review the root policy
+Run `cat conjur\conjur.yml`{{execute}} to review the root policy
 ```
 - !policy
-  id: db
+  id: server
 
 - !policy
   id: ansible
 ```
 **db policy**
 
-Run `cat db.yml`{{execute}} to review the root policy
+Run `cat conjur\server.yml`{{execute}} to review the root policy
 
 ```
 - &variables
@@ -39,7 +39,7 @@ Run `cat db.yml`{{execute}} to review the root policy
 
 **ansible policy**
 
-Run `cat ansible.yml`{{execute}} to review the root policy
+Run `cat conjur\ansible.yml`{{execute}} to review the root policy
 
 ```
 - !layer
@@ -55,37 +55,37 @@ Now let's copy the policy files to Conjur CLI container and load them
 **Load Root Policy**
 
 ```
-docker cp conjur.yml root_client_1:/tmp/
+docker cp conjur\conjur.yml root_client_1:/tmp/
 docker-compose exec client conjur policy load --replace root /tmp/conjur.yml
 ```{{execute}}
 
 **Load ansible Policy**
 ```
-docker cp ansible.yml root_client_1:/tmp/
+docker cp conjur\ansible.yml root_client_1:/tmp/
 docker-compose exec client conjur policy load ansible /tmp/ansible.yml | tee ansible.out
 ```{{execute}}
 
-**Load db Policy**
+**Load server Policy**
 ```
-docker cp db.yml root_client_1:/tmp/
-docker-compose exec client conjur policy load db /tmp/db.yml
+docker cp conjur\server.yml root_client_1:/tmp/
+docker-compose exec client conjur policy load db /tmp/server.yml
 ```{{execute}}
 
 ### Add variable
 Let's create secrets and add them to Conjur
 
 Host 1 IP:
-`docker-compose exec client conjur variable values add db/host1/host "[[HOST1_IP]]"`{{execute}}
+`docker-compose exec client conjur variable values add server/host1/host "[[HOST1_IP]]"`{{execute}}
 Host 1 user name:
-`docker-compose exec client conjur variable values add db/host1/user "service01"`{{execute}}
+`docker-compose exec client conjur variable values add server/host1/user "service01"`{{execute}}
 Host 1 password:
-`docker-compose exec client conjur variable values add db/host1/pass "W/4m=cS6QSZSc*nd"`{{execute}}
+`docker-compose exec client conjur variable values add server/host1/pass "W/4m=cS6QSZSc*nd"`{{execute}}
 
 Host 2 IP:
-`docker-compose exec client conjur variable values add db/host2/host "[[HOST2_IP]]"`{{execute}}
+`docker-compose exec client conjur variable values add server/host2/host "[[HOST2_IP]]"`{{execute}}
 Host 2 user name:
-`docker-compose exec client conjur variable values add db/host2/user "service02"`{{execute}}
+`docker-compose exec client conjur variable values add server/host2/user "service02"`{{execute}}
 Host 2 password:
-`docker-compose exec client conjur variable values add db/host2/pass "5;LF+J4Rfqds:DZ8"`{{execute}}
+`docker-compose exec client conjur variable values add server/host2/pass "5;LF+J4Rfqds:DZ8"`{{execute}}
 
 
