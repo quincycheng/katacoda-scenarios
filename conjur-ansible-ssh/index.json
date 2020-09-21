@@ -38,12 +38,12 @@
       }
     ],
     "intro": {
-      "text": "intro.md"
+      "text": "intro.md",
+      "code": "foreground.sh"
     },
     "finish": {
       "text": "finish.md"
-    },
-   "assets": { "host01": [ {"file": "*", "target": "/root"}, {"file": "*.sh", "target": "/root", "chmod":"+x"} ] }
+    }
   },
   "environment": {
     "uilayout": "terminal-terminal"
