@@ -10,7 +10,7 @@ Run `cat conjur.yml`{{execute}} to review the root policy
 - !policy
   id: ansible
 ```
-**db policy**
+**Server policy**
 
 Run `cat server.yml`{{execute}} to review the root policy
 
