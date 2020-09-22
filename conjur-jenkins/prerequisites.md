@@ -1,6 +1,7 @@
-The following prerequisites are assumed:
+The following prerequisites are provided for you.   They are being powered on.
 
-- You have a fully operational Conjur appliance configured and running.
-- You have a fully operational Jenkins host configured and running.
+- Jenkins (port 8080)
+- Target Web System (port 8111)
+- Conjur (port 8000)
 
-We will deploy Jenkins & Conjur Open Source appliance in next 2 steps
+
