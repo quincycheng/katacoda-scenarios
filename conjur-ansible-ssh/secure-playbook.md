@@ -1,19 +1,18 @@
 
-## "retrieve_conjur_variable" lookup plugin
+## Lookup plugin
 
 Conjur's retrieve_conjur_variable lookup plugin provides a means for retrieving secrets from Conjur for use in playbooks.
-
-Note that by default the lookup plugin uses the Conjur 5 API to retrieve secrets. To use Conjur 4 API, set an environment CONJUR_VERSION="4".
 
 Since lookup plugins run in the Ansible host machine, the identity that will be used for retrieving secrets are those of the Ansible host. Thus, the Ansible host requires elevated privileges, access to all secrets that a remote node may need.
 
 The lookup plugin can be invoked in the playbook's scope as well as in a task's scope.
 
-## Example Playbook
+## Securing Playbook
 
-Using environment variables:
+Let's configure the plugin using environment variables:
 
 ```
+cd secure-playbook
 export CONJUR_ACCOUNT="demo"
 export CONJUR_APPLIANCE_URL="https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/"
 export CONJUR_CERT_FILE="/root/conjur-demo.pem"
