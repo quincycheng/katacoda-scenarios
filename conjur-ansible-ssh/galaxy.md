@@ -14,6 +14,10 @@ docker cp conjur_client_1:/root/conjur-demo.pem /root/
 
 ```
 docker-compose exec client conjur hostfactory token create ansible|tee hftoken
+```{{execute}}
+
+
+```
 export HFTOKEN="$(grep token hftoken | cut -d: -f2 | tr -d ' \r\n')" && echo $HFTOKEN
 ```{{execute}}
 
