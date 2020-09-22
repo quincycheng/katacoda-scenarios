@@ -18,6 +18,6 @@ EOF
 
 `cat insecure-playbook/insecure-playbook.yml`{{execute HOST1}}
 
-### inventory
+### Let's give it a try
 
 `ansible-playbook -i insecure-playbook/inventory insecure-playbook/insecure-playbook.yml`{{execute HOST1}}
