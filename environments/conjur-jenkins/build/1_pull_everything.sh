@@ -9,3 +9,6 @@ docker pull cyberark/conjur
 
 cd /tmp
 git clone https://github.com/quincycheng/katacoda-env-conjur-jenkins.git
+
+
+apt-get upgrade -y
