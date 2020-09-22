@@ -1,22 +1,10 @@
 
 ## Securing Playbook
 
-Let's configure the plugin using environment variables:
+Let's convert the conjur identity to make it compatible with Ansible:
 
 ```
-cd secure-playbook
-export CONJUR_ACCOUNT="demo"
-export CONJUR_APPLIANCE_URL="https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com/"
-export CONJUR_CERT_FILE="/root/conjur-demo.pem"
-export CONJUR_AUTHN_LOGIN="host/ansible/ansible-01"
-export CONJUR_AUTHN_API_KEY="$(tail -n +2 ansible.out | jq -r '.created_roles."demo:host:ansible/ansible-01".api_key')"
-```{{execute}}
-
-We can get the conjur client configuration from the client container:
-
-```
-docker cp conjur_client_1:/root/.conjurrc /root/
-docker cp conjur_client_1:/root/conjur-demo.pem /root/
+sed -i "s=login host/=login host%2F=" /etc/conjur.identity
 ```{{execute}}
 
 Let's review the sample inventory, which stores the 2 servers
