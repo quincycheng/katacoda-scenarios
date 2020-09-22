@@ -68,7 +68,7 @@ docker-compose exec client conjur policy load ansible /tmp/ansible.yml | tee ans
 **Load server Policy**
 ```
 docker cp server.yml conjur_client_1:/tmp/
-docker-compose exec client conjur policy load db /tmp/server.yml
+docker-compose exec client conjur policy load server /tmp/server.yml
 ```{{execute}}
 
 ### Add variable
