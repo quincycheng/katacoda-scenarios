@@ -24,10 +24,6 @@
         "title": "The Plan",
         "text": "plan.md"
       },
-       {
-        "title": "Conjur Lookup Plugin",
-        "text": "galaxy.md"
-      },
       {
         "title": "Install Conjur",
         "text": "conjur.md"
@@ -40,6 +36,10 @@
       {
         "title": "Conjur Policy",
         "text": "policy.md"
+      },
+      {
+        "title": "App Identity",
+        "text": "galaxy.md"
       },
       {
         "title": "The Secrets",
