@@ -1,5 +1,5 @@
 {
-  "title": "wip- Using Conjur to secure SSH secrets for Ansible",
+  "title": "Using Conjur to secure SSH secrets for Ansible",
   "description": "Learn how to retreive SSH secrets from Conjur for Ansible connecting to multiple hosts",
   "icon": "fa-redhat",
   "details": {
@@ -21,7 +21,7 @@
         "text": "risk.md"
       },
        {
-        "title": "Setting Up Role & Lookup Plugin",
+        "title": "Conjur Lookup Plugin",
         "text": "galaxy.md"
       },
       {
@@ -34,12 +34,16 @@
       },
       
       {
-        "title": "Configure Conjur Policy & Secrets",
+        "title": "Conjur Policy & Secrets",
         "text": "policy.md"
       },
       {
-        "title": "Ansible Playbook",
+        "title": "Securing Playbook",
         "text": "secure-playbook.md"
+      },
+      {
+        "title": "Review the Risk",
+        "text": "risk2.md"
       }
     ],
     "intro": {
