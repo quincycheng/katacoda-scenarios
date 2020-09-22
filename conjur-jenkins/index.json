@@ -9,38 +9,7 @@
             {
                 "title": "Prerequisites",
                 "text": "prerequisites.md"
-            },
-            {
-                "title": "Setup Jenkins",
-                "text": "jenkins.md"
-            },
-            {
-                "title": "Setup Conjur",
-                "text": "conjur.md"
-            },
-            {
-                "title": "Conjur Policies",
-                "text": "policy.md"
-            },            
-            {
-                "title": "Certificate Preparation",
-                "text": "certificate.md"
-            },
-            {
-                "title": "Configure Plugin",
-                "text": "plugin.md"
-            },
-            {
-                "title": "Configure Folder",
-                "text": "folder.md"
-            },
-            {
-                "title": "From Pipeline Scripts",
-                "text": "script.md"
-            },
-            {
-                "title": "From Freestyle Projects",
-                "text": "project.md"
+          
             }
         ],
         "intro": {
