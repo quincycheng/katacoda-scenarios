@@ -18,7 +18,7 @@ docker-compose exec client conjur hostfactory token create ansible|tee hftoken
 
 
 ```
-export HFTOKEN="$(grep token hftoken | cut -d: -f2 | tr -d ' \r\n')" && echo $HFTOKEN
+export HFTOKEN="$(grep token hftoken | cut -d: -f2 | tr -d ' \r\n' | tr -d ','  | tr -d '\"' )"
 ```{{execute}}
 
 ```
