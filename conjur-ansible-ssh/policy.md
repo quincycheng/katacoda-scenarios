@@ -2,7 +2,7 @@ The sample policies have been prepared for you.
 
 **Root policy**
 
-Run `cat conjur\conjur.yml`{{execute}} to review the root policy
+Run `cat conjur.yml`{{execute}} to review the root policy
 ```
 - !policy
   id: server
@@ -12,7 +12,7 @@ Run `cat conjur\conjur.yml`{{execute}} to review the root policy
 ```
 **db policy**
 
-Run `cat conjur\server.yml`{{execute}} to review the root policy
+Run `cat server.yml`{{execute}} to review the root policy
 
 ```
 - &variables
@@ -39,7 +39,7 @@ Run `cat conjur\server.yml`{{execute}} to review the root policy
 
 **ansible policy**
 
-Run `cat conjur\ansible.yml`{{execute}} to review the root policy
+Run `cat ansible.yml`{{execute}} to review the root policy
 
 ```
 - !layer
@@ -55,19 +55,19 @@ Now let's copy the policy files to Conjur CLI container and load them
 **Load Root Policy**
 
 ```
-docker cp conjur\conjur.yml root_client_1:/tmp/
+docker cp conjur.yml root_client_1:/tmp/
 docker-compose exec client conjur policy load --replace root /tmp/conjur.yml
 ```{{execute}}
 
 **Load ansible Policy**
 ```
-docker cp conjur\ansible.yml root_client_1:/tmp/
+docker cp ansible.yml root_client_1:/tmp/
 docker-compose exec client conjur policy load ansible /tmp/ansible.yml | tee ansible.out
 ```{{execute}}
 
 **Load server Policy**
 ```
-docker cp conjur\server.yml root_client_1:/tmp/
+docker cp server.yml root_client_1:/tmp/
 docker-compose exec client conjur policy load db /tmp/server.yml
 ```{{execute}}
 
