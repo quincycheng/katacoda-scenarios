@@ -34,8 +34,12 @@
       },
       
       {
-        "title": "Conjur Policy & Secrets",
+        "title": "Conjur Policy",
         "text": "policy.md"
+      },
+      {
+        "title": "The Secrets",
+        "text": "secret.md"
       },
       {
         "title": "Securing Playbook",
