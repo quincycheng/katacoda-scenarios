@@ -23,8 +23,8 @@ export CONJUR_AUTHN_API_KEY="$(tail -n +2 ansible.out | jq -r '.created_roles."d
 We can get the conjur client configuration from the client container:
 
 ```
-docker cp root_client_1:/root/.conjurrc /root/
-docker cp root_client_1:/root/conjur-demo.pem /root/
+docker cp conjur_client_1:/root/.conjurrc /root/
+docker cp conjur_client_1:/root/conjur-demo.pem /root/
 ```{{execute}}
 
 Let's review the sample inventory, which stores the 2 servers
