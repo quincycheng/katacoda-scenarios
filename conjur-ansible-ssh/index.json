@@ -20,6 +20,10 @@
         "title": "The Risk",
         "text": "risk.md"
       },
+            {
+        "title": "The Plan",
+        "text": "plan.md"
+      },
        {
         "title": "Conjur Lookup Plugin",
         "text": "galaxy.md"
