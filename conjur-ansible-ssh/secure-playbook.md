@@ -27,7 +27,7 @@ cat inventory
 ```{{execute}}
 
 ```
-[db_servers]
+[demo_servers]
 host1
 host2
 ```
@@ -38,14 +38,14 @@ Let's review the sample playbook, which connects to
 `cat playbook.yml`{{execute}}
 
 ```
-- hosts: db_servers
+- hosts: demo_servers
   roles:
     - role: cyberark.conjur-lookup-plugin
   vars:
       ansible_connection: ssh      
-      ansible_host: "{{ lookup('retrieve_conjur_variable', 'db/' + inventory_hostname+ '/host') }}"
-      ansible_user: "{{ lookup('retrieve_conjur_variable', 'db/' + inventory_hostname+ '/user') }}"
-      ansible_ssh_pass: "{{ lookup('retrieve_conjur_variable', 'db/' + inventory_hostname+ '/pass') }}"
+      ansible_host: "{{ lookup('retrieve_conjur_variable', 'server/' + inventory_hostname+ '/host') }}"
+      ansible_user: "{{ lookup('retrieve_conjur_variable', 'server/' + inventory_hostname+ '/user') }}"
+      ansible_ssh_pass: "{{ lookup('retrieve_conjur_variable', 'server/' + inventory_hostname+ '/pass') }}"
 
   tasks:
     - name: Get user name
