@@ -20,7 +20,7 @@ export HFTOKEN="$(grep token hftoken | cut -d: -f2 | tr -d ' \r\n')" && echo $HF
 ```
 cat <<EOF > inventory
 [servers]
-localhost
+host01
 EOF
 ```{{execute}}
   
