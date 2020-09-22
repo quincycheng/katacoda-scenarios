@@ -1,6 +1,8 @@
 
+Ansible can manage servers via SSH.
+First we need to create SSH accounts on our managed servers
 
-## Create accounts
+## Local Server
 
 Let's create an account on host 1
 ```
@@ -11,6 +13,8 @@ passwd service01
 Enter new UNIX password: `W/4m=cS6QSZSc*nd`{{execute HOST1}}
 
 Retype new UNIX password: `W/4m=cS6QSZSc*nd`{{execute HOST1}}
+
+## Remote Server
 
 Let's create a service account on host 2
 
