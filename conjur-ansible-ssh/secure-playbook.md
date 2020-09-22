@@ -1,12 +1,4 @@
 
-## Lookup plugin
-
-Conjur's retrieve_conjur_variable lookup plugin provides a means for retrieving secrets from Conjur for use in playbooks.
-
-Since lookup plugins run in the Ansible host machine, the identity that will be used for retrieving secrets are those of the Ansible host. Thus, the Ansible host requires elevated privileges, access to all secrets that a remote node may need.
-
-The lookup plugin can be invoked in the playbook's scope as well as in a task's scope.
-
 ## Securing Playbook
 
 Let's configure the plugin using environment variables:
@@ -29,7 +21,10 @@ docker cp conjur_client_1:/root/conjur-demo.pem /root/
 
 Let's review the sample inventory, which stores the 2 servers
 
-`cat inventory`{{execute}}
+```
+cd ../secure-playbook
+cat inventory
+```{{execute}}
 
 ```
 [db_servers]
