@@ -35,7 +35,7 @@ cat <<EOF > grant_conjur_id.yml
 - hosts: servers
   roles:
     - role: cyberark.conjur-host-identity
-      conjur_appliance_url: "https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com"
+      conjur_appliance_url: "http://conjur"
       conjur_account: "demo"
       conjur_host_factory_token: "{{lookup('env', 'HFTOKEN')}}"
       conjur_host_name: "{{inventory_hostname}}"
