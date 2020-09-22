@@ -7,6 +7,10 @@ Install the Conjur role using the following syntax:
 ansible-galaxy install cyberark.conjur-host-identity
 ```{{execute}}
 
+```
+docker cp conjur_client_1:/root/conjur-demo.pem /root/
+```{{execute}}
+
 
 ```
 docker-compose exec client conjur hostfactory token create ansible|tee hftoken
