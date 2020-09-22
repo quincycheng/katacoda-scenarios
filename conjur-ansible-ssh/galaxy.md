@@ -25,16 +25,21 @@ export HFTOKEN="$(grep token hftoken | cut -d: -f2 | tr -d ' \r\n' | tr -d ','  
 5. Prepare an inventory file
 
 ```
-cat <<EOF > inventory
+cat inventory
+```{{execute}}
+
+```
 [servers]
 host01
-EOF
-```{{execute}}
+```
   
 6. Prepare a playbok to grant the ansible host with Conjur Identity 
   
 ```
-cat <<EOF > grant_conjur_id.yml
+cat grant_conjur_id.yml
+```{{execute}}
+
+```
 - hosts: servers
   roles:
     - role: cyberark.conjur-host-identity
@@ -44,8 +49,7 @@ cat <<EOF > grant_conjur_id.yml
       conjur_host_name: "{{inventory_hostname}}"
       conjur_ssl_certificate:  "{{lookup('file', '/root/conjur-demo.pem')}}"
       conjur_validate_certs: "false"
-EOF
-```{{execute}}
+```
 
 7. Grant it!
 
