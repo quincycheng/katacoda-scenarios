@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# should be done in image
+rm -rf *
 git clone https://github.com/quincycheng/katacoda-env-conjur-jenkins.git
 
 cd katacoda-env-conjur-jenkins
