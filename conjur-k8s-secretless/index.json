@@ -1,0 +1,47 @@
+{
+  "title": "Using Secretless on Kubernetes",
+  "icon": "fa-kubernetes",
+  "description": "Learn how to use Secretless in Kubernetes",
+  "details": {
+    "steps": [
+      { "title": "Overview", "text": "overview.md" },
+
+      { "title": "Start Kubernetes", "text": "k8s-1.md" },
+      
+      { "title": "Typical K8S app", "text": "insecure-1.md" },
+      { "title": "The Risk", "text": "insecure-2.md" },
+      
+      { "title": "Steps for Security Admin", "text": "sa-1.md" },
+      { "title": "Create PostgreSQL Service in Kubernetes", "text": "sa-2.md" },
+      { "title": "Create Application Database", "text": "sa-3.md" },
+      { "title": "Create Application Namespace and Store Credentials", "text": "sa-4.md" },
+      { "title": "Create Secretless Broker Configuration ConfigMap", "text": "sa-5.md" },
+      { "title": "Create Application Service Account and Grant Entitlements", "text": "sa-6.md" },
+
+      { "title": "Steps for Application Developer", "text": "ad-1.md" },
+      { "title": "Sample Application Overview", "text": "ad-2.md" },
+      { "title": "Create Application Deployment Manifest", "text": "ad-3.md" },
+      { "title": "Deploy Application With Secretless Broker", "text": "ad-4.md" },
+      { "title": "Expose Application Publicly", "text": "ad-5.md" },
+      
+      { "title": "Test the Application", "text": "test.md" },
+      { "title": "More details", "text": "more.md" }
+
+    ],
+    "intro": {
+      "text": "intro.md",
+      "credits": "https://www.conjur.org"
+   },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "uilayout": "terminal",
+    "showdashboard": true,
+     "dashboards": [{"name": "Minikube Dashboard", "port": 30000}]
+  },
+  "backend": {
+    "imageid": "conjur-poc-cluster"
+  }
+}
