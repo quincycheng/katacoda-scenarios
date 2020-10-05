@@ -19,7 +19,7 @@ Let's test the setup by copying & updating the project
 
 6. Click "Add build step" > "Execute a shell"
 
-Command:  curl -Is -u theServerAccount:$CONJUR_SECRET http://http-auth-server
+   Command:  `curl -Is -u theServerAccount:$CONJUR_SECRET http://http-auth-server`{{copy}}
 
 7. Click Save
 
