@@ -1,6 +1,6 @@
 Let's test the setup by copying & updating the project
 
-1. To copy project, go to Demo & click "New Item"](https://[[HOST_SUBDOMAIN]]-8081-[[KATACODA_HOST]].environments.katacoda.com/
+1. To copy project, go to Demo & click ["New Item"](https://[[HOST_SUBDOMAIN]]-8081-[[KATACODA_HOST]].environments.katacoda.com/
 
 Enter an item name: Secure Freestyle Project
 Copy from: Typical Freestyle Project
