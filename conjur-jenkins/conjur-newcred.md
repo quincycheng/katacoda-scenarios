@@ -1,38 +1,11 @@
 
-These steps assume that the credential is declared as a variable in DAP and that the value is loaded into DAP.
 
-Decide whether to define the variable at the Global Configuration level or at a folder level. In the Jenkins UI, navigate to the desired location.
+Visiti Jenkins > Demo > Credentials > Folder > Global credentials (unrestricted) > [Add Credentials](https://2886795283-8081-kitek07.environments.katacoda.com/job/Demo/credentials/store/folder/domain/_/newCredentials) to create a new credentaisl
 
-Credentials defined globally may be referenced by any Jenkins pipeline code or project.
+  Kind: Conjur Secret Credentials
 
-Credentials defined at the folder level may be referenced only by pipeline code or projects in that folder.
+  Variable Path: jenkins-app/db_password
 
-Click ConjurSecret.
+This is the complete Conjur ID of the variable. This includes the policy path where the variable is defined.
 
-Complete the form that appears.
-
-Field
-
-Description
-
-Scope
-
-Select an appropriate value for your use case.
-
-Variable Path
-
-The complete Conjur ID of the variable. This includes the policy path where the variable is defined.
-
-For example, if a variable named db_password is defined in a policy hierarchy identified as databases/oracle, the variable path is: 
-
- 	
-databases/oracle/db_password
-ID
-
-An ID to use in Jenkins to reference this variable. It does not need to match the name in DAP.
-
-Description
-
-Optionally provide a description of this secret.
-
-Click Save.
+Click OK.
