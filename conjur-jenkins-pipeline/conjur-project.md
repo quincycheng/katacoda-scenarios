@@ -1,8 +1,8 @@
-Let's test the setup by copying & updating the project
+Let's test the setup by creating a new project
 
 1. To create a new project, go to Demo & click ["New Item"](https://[[HOST_SUBDOMAIN]]-8081-[[KATACODA_HOST]].environments.katacoda.com/
 
-Enter an item name: Secure Freestyle Project
+Enter an item name: Secure Pipeline Project
 Type: Freestyle Project
 
 ![theimage](https://github.com/quincycheng/katacoda-scenarios/raw/master/conjur-jenkins/media/xxx.PNG)
