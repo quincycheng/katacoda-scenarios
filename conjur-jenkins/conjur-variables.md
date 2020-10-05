@@ -7,8 +7,7 @@ cat > jenkins-app.yml << EOF
 #Declare the secrets required by the application
 
 - &variables
-  - !variable db_password
-  - !variable db_password2
+  - !variable web_password
 
 # Define a group and assign privileges for fetching the secrets
 
@@ -51,5 +50,5 @@ The CLI command to set a value is:
 For example: 
 
 ```
-docker-compose exec client conjur variable values add jenkins-app/db_password NotSoSecureSecret
+docker-compose exec client conjur variable values add jenkins-app/web_password NotSoSecureSecret
 ```{{execute}}
