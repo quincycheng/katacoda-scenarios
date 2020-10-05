@@ -48,7 +48,7 @@
       },
       {
         "title": "Configure Jenkins-DAP connection",
-        "text": "conjur-newcred.md"
+        "text": "conjur-conn.md"
       },
       {
         "title": "Define secrets in Jenkins",
