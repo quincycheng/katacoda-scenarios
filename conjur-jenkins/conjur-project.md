@@ -2,14 +2,13 @@ Let's test the setup by copying & updating the project
 
 1. To create a new project, go to Demo & click ["New Item"](https://[[HOST_SUBDOMAIN]]-8081-[[KATACODA_HOST]].environments.katacoda.com/
 
-Enter an item name: Secure Freestyle Project
-Type: Freestyle Project
-
-![theimage](https://github.com/quincycheng/katacoda-scenarios/raw/master/conjur-jenkins/media/xxx.PNG)
+ - Enter an item name: `Secure Freestyle Project`{{copy}}
+ - Type: `Freestyle Project`
 
 2. Click OK
 
-3. Next, we need to add a new binding.   Check "Use secret text(s) or files(s) under "Build Triggers"
+3. Next, we need to add a new binding.   
+   Check "Use secret text(s) or files(s) under "Build Triggers"
 
 4. click "Add" > "Conjur Secret Credentials"
 
