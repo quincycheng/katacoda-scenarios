@@ -61,3 +61,20 @@ echo $frontend_api_key
 The following steps create Conjur policy that defines each variable and provides appropriate privileges to the Jenkins layer to access those variables.
 
 If variables are already defined, you need only add the Jenkins layer to an existing permit statement associated with the variable. The following steps assume that the required variables are not yet declared in Conjur.
+
+7. Declare a policy branch for the application & save it
+
+```
+docker-compose exec client bash
+cat > conjur2.yml << EOF
+- !policy
+  id: jenkins-app
+EOF
+exit
+```{{execute}}
+
+8. You may change the id in the above example.
+
+9. Load the policy into Conjur: 
+
+`docker-compose exec client conjur policy load root /conjur2.yml`{{execute}}
