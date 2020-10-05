@@ -4,7 +4,7 @@ Visiti Jenkins > Demo > Credentials > Folder > Global credentials (unrestricted)
 
   Kind: Conjur Secret Credentials
 
-  Variable Path: jenkins-app/db_password
+  Variable Path: jenkins-app/web_password
 
 This is the complete Conjur ID of the variable. This includes the policy path where the variable is defined.
 
