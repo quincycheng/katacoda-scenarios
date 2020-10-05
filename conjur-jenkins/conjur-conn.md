@@ -7,11 +7,11 @@ The following steps define the connection to the DAP appliance. This is typicall
 
 ![theimage](https://github.com/quincycheng/katacoda-scenarios/raw/master/conjur-jenkins/media/04-conn.PNG)
 
-  Username: host/jenkins-frontend/frontend-01
-  Password: 
+ - Username: ``host/jenkins-frontend/frontend-01`{{copy}}
+ - Password: 
 
   Copy and paste the API key that was returned by DAP when you loaded the policy declaring this host.
-  Forgot it?  No worries, execute `cat frontend.out` to review it
+  Forgot it?  No worries, execute `cat frontend.out`{{execute}} to review it
 
 3. Click Save.
 
@@ -26,9 +26,9 @@ To learn more, visit [CyberArk Conjur Doc](https://docs.conjur.org/Latest/en/Con
 
 6. Fill in the form
 
-Account: quick-start
-Appliance URL: https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com
-Conjur Authn Credential: host/jenkins-frontend/frontend-01/*****
+- Account: `quick-start`{{copy}}
+- Appliance URL: https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com
+- Conjur Authn Credential: `host/jenkins-frontend/frontend-01/*****`{{copy}}
 
 
 7. Click Save
