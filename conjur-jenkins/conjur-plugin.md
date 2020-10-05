@@ -1,10 +1,15 @@
-Download the Conjur.hpi file from https://github.com/cyberark/conjur-credentials-plugin/releases
 
-Log into Jenkins as an administrator.
+1. Download the Conjur.hpi file from https://github.com/cyberark/conjur-credentials-plugin/releases
 
-Navigate to Jenkins -> Manage Jenkins -> Manage Plugins -> Advanced.
-In the Upload Plugin section, browse for the downloaded copy of Conjur.hpi.
+![theimage](https://github.com/quincycheng/katacoda-scenarios/raw/master/conjur-jenkins/media/03-plugin_download.PNG)
 
-Click Upload Plugin.
 
-Restart Jenkins.
+2. Navigate to Jenkins -> Manage Jenkins -> Manage Plugins -> Advanced](https://[[HOST_SUBDOMAIN]]-8081-[[KATACODA_HOST]].environments.katacoda.com/pluginManager/advanced)
+3. In the Upload Plugin section, browse for the downloaded copy of Conjur.hpi.
+
+![theimage](https://github.com/quincycheng/katacoda-scenarios/raw/master/conjur-jenkins/media/03-plugin_upload.PNG)
+
+4. Click `Upload ` 
+
+![theimage](https://github.com/quincycheng/katacoda-scenarios/raw/master/conjur-jenkins/media/03-plugin_complete.PNG)
+
