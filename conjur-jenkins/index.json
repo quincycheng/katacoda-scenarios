@@ -47,11 +47,15 @@
         "text": "conjur-plugin.md"
       },
       {
-        "title": "New Credentails",
+        "title": "Configure Jenkins-DAP connection",
         "text": "conjur-newcred.md"
       },
       {
-        "title": "New Project",
+        "title": "Define secrets in Jenkins",
+        "text": "conjur-newcred.md"
+      },
+      {
+        "title": "Securing the Project",
         "text": "conjur-project.md"
       }
     ],
