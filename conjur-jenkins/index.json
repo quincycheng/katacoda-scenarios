@@ -9,8 +9,29 @@
             {
                 "title": "Prerequisites",
                 "text": "prerequisites.md"
-          
+            },
+            {
+                "title": "Log in to Jenkins",
+                "text": "jenkins-login.md"
+            },
+            
+            {
+                "title": "Log in to Jenkins",
+                "text": "jenkins-demo.md"
+            },
+                        {
+                "title": "Typical Freestyle",
+                "text": "jenkins-freestyle.md"
+            },
+             {
+                "title": "Build it",
+                "text": "jenkins-build.md"
+            },
+            {
+                "title": "The risk",
+                "text": "jenkins-risk.md"
             }
+            
         ],
         "intro": {
             "text": "intro.md",
@@ -23,7 +44,7 @@
     },
     "environment": {
       "showdashboard": true,
-      "dashboards": [{"name": "Conjur", "port": 8080}, {"name": "Jenkins", "port": 8000}],
+      "dashboards": [{"name": "Jenkins", "port": 8081}, {"name": "Conjur", "port": 8080},  {"name": "Target Web App", "port": 80}],
         "uilayout": "terminal-iframe",
         "uimessage1": "\u001b[32mWelcome to Conjur Jenkins tutorial.\u001b[m\r\n"
     },
