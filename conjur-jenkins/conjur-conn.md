@@ -18,3 +18,17 @@ The following steps define the connection to the DAP appliance. This is typicall
 You can also decide whether to set up global or folder-level access to DAP, or a combination of both.
 
 To learn more, visit [CyberArk Conjur Doc](https://docs.conjur.org/Latest/en/Content/Integrations/jenkins-configure.htm?tocpath=Integrations%7CJenkins%7C_____2#ConfigureJenkinsConjurconnection)
+
+
+4. Navigate to either Jenkins > Manage Jenkins > [Configure System](https://[[HOST_SUBDOMAIN]]-8081-[[KATACODA_HOST]].environments.katacoda.com/configure)
+
+5. Scroll down to "Conjur Appliance"
+
+6. Fill in the form
+
+Account: quick-start
+Appliance URL: https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com
+Conjur Authn Credential: host/jenkins-frontend/frontend-01/*****
+
+
+7. Click Save
