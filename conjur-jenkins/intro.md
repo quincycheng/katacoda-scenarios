@@ -32,4 +32,3 @@ The Conjur Jenkins integration provides the following advantages to Jenkins DevO
 
 
 [www.conjur.org](https://www.conjur.org)
-![ga](https://ga-beacon-226104.appspot.com/UA-131132287-1/jenkins-conjur-credential-plugin?pixel&useReferer)
