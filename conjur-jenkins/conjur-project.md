@@ -20,7 +20,7 @@ Type: Freestyle Project
 
 6. Click "Add build step" > "Execute a shell"
 
-Command:  curl http://theServerAccount:$CONJUR_SECRET@http-auth-server
+Command:  curl -Is -u theServerAccount:$CONJUR_SECRET http://http-auth-server
 
 7. Click Save
 
