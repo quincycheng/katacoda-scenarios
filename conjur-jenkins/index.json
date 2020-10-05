@@ -1,5 +1,5 @@
 {
-  "title": "WIP-Securing Jenkins Freestyle project using Conjur",
+  "title": "Securing Jenkins Freestyle project using Conjur",
   "description": "Learn how to configure Jenkins Conjur Credential plugin to retrieve secrets & secure Jenkins Freestyle projects",
   "difficulty": "Intermediate",
   "time": "15-20 minutes",
