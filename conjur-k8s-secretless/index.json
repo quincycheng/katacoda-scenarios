@@ -42,6 +42,6 @@
      "dashboards": [{"name": "Minikube Dashboard", "port": 30000}]
   },
   "backend": {
-    "imageid": "conjur-poc-cluster"
+    "imageid": "conjur-poc-cluster-running"
   }
 }
