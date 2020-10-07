@@ -9,12 +9,12 @@ In this section, we assume the following:
 
 Note: If you're using your own database server and it's not SSL-enabled, please see the [service authenticator documentation](https://docs.secretless.io/Latest/en/Content/References/handlers/postgres.htm) for how to disable SSL in your Secretless configuration.
 
-If you followed along in the last section and are using minikube, you can run:
+If you followed along in the last section, you can run:
 
 ```
 export SECURITY_ADMIN_USER=security_admin_user
 export SECURITY_ADMIN_PASSWORD=security_admin_password
-export REMOTE_DB_URL="$(minikube ip):30001"
+export REMOTE_DB_URL="[[HOST_IP]]:30001"
 ```{{execute}}
 
 Next, we’ll create the application database and user, and securely store the user’s credentials:
