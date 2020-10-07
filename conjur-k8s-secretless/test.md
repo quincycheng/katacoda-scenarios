@@ -2,7 +2,7 @@ Let’s verify everything works as expected.
 
 First, make sure the `APPLICATION_URL` is correctly set:
 
-`export APPLICATION_URL=$(minikube ip):30002`{{execute}}
+`export APPLICATION_URL=[[HOST_IP]]:30002`{{execute}}
 
 Now let’s create a pet (POST /pet):
 
