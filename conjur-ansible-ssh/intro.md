@@ -1,6 +1,6 @@
 In this tutorial, we will show you how to secure Ansible using Conjur to protect SSH secrets
 
-We will need to manage 2 servers via SSH by Ansible.
+We will need to manage two servers via SSH by Ansible.
 Typically that'll involve:
 1. Create SSH service accounts on the managed servers
 2. Install Ansible
