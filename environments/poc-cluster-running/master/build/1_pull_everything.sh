@@ -12,6 +12,9 @@ curl -o docker-compose.yml https://quincycheng.github.io/docker-compose.quicksta
 docker-compose pull
 docker-compose run --no-deps --rm conjur data-key generate > data_key
 
+docker pull postgres:9.6
+
+
 #Jenkins
 docker pull jenkins/jenkins:lts
 
