@@ -26,4 +26,4 @@ service "quick-start-application" created
 ```
 Congratulations!
 
-The application is now available at `$(minikube ip):30002`. We’ll call this the `APPLICATION_URL` going forward.
+The application is now available at `[[HOST_IP]]:30002`. We’ll call this the `APPLICATION_URL` going forward.
