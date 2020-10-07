@@ -67,6 +67,6 @@
     "uilayout": "terminal-terminal"
   },
   "backend": {
-    "imageid": "conjur-poc-cluster"
+    "imageid": "conjur-poc-cluster-running"
   }
 }
