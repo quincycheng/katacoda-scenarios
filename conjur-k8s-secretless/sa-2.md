@@ -135,14 +135,14 @@ kubectl --namespace quick-start-backend-ns  apply -f pg-service.yml
 
 Note:The service manifest above assumes you're using minikube, where NodePort is the correct service type; for a GKE cluser, you may prefer a different service type, such as a LoadBalancer.
 
-The database is now available at $(minikube ip):30001, which we’ll call the REMOTE_DB_URL.
+The database is now available at [[HOST_IP]]:30001, which we’ll call the REMOTE_DB_URL.
 
 The database has no data yet, but we can verify it works by logging in as the security admin and listing the users:
 
 ```
 export SECURITY_ADMIN_USER=security_admin_user
 export SECURITY_ADMIN_PASSWORD=security_admin_password
-export REMOTE_DB_URL=$(minikube ip):30001
+export REMOTE_DB_URL=[[HOST_IP]]:30001
 
 docker run --rm -it -e PGPASSWORD=${SECURITY_ADMIN_PASSWORD} postgres:9.6 \
   psql -U ${SECURITY_ADMIN_USER} "postgres://${REMOTE_DB_URL}/postgres" -c "\du"
