@@ -2,7 +2,6 @@
 We will now grant an application ID to the Ansible server.
 
 1. Install the Conjur role using the following syntax:
-
 ```
 ansible-galaxy install cyberark.conjur-host-identity
 ```{{execute}}
