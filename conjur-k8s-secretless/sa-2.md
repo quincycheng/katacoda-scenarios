@@ -22,8 +22,32 @@ kubectl apply -f conjur/role-binding.yaml
 Lastly, we can install Conjur
 
 ```
-helm install cyberark/conjur-oss \
+helm install conjur-cluster cyberark/conjur-oss \
     --set ssl.hostname=conjur.demo.com,dataKey="$(docker run --rm cyberark/conjur data-key generate)",authenticators="authn-k8s/dev\,
 authn" \
     --namespace conjur-server 
 ```{{execute}}
+
+
+
+
+```
+      export POD_NAME=$(kubectl get pods --namespace conjur-server \
+                                         -l "app=conjur-oss,release=conjur-cluster" \
+                                         -o jsonpath="{.items[0].metadata.name}")
+```{{execute}}
+
+```
+kubectl exec --namespace conjur-server \
+                   $POD_NAME \
+                   --container=conjur-oss \
+                   -- conjurctl account create "default"
+                   
+                   
+```{{execute}}
+                   
+                   
+                   
+                   
+                   
+                   
