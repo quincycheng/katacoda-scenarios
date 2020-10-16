@@ -10,6 +10,9 @@ Let's install Conjur using Helm.
 First, we need to add `cyberark` repo to Helm
 ```
 helm repo add cyberark https://cyberark.github.io/helm-charts
+```{{execute}}
+
+```
 helm repo update
 ```{{execute}}
 
@@ -34,18 +37,16 @@ authn" \
 
 
 ```
-      export POD_NAME=$(kubectl get pods --namespace conjur-server \
-                                         -l "app=conjur-oss,release=conjur-cluster" \
-                                         -o jsonpath="{.items[0].metadata.name}")
+ export POD_NAME=$(kubectl get pods --namespace conjur-server \
+   -l "app=conjur-oss,release=conjur-cluster" \
+   -o jsonpath="{.items[0].metadata.name}")
 ```{{execute}}
 
 ```
 kubectl exec --namespace conjur-server \
-                   $POD_NAME \
-                   --container=conjur-oss \
-                   -- conjurctl account create "default"
-                   
-                   
+    $POD_NAME \
+  --container=conjur-oss \
+  -- conjurctl account create "default"
 ```{{execute}}
                    
                    
