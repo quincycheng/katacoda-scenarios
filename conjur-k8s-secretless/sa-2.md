@@ -25,8 +25,8 @@ Lastly, we can install Conjur
 helm install conjur-cluster cyberark/conjur-oss \
     --set ssl.hostname=conjur.demo.com,dataKey="$(docker run --rm cyberark/conjur data-key generate)",authenticators="authn-k8s/dev\,
 authn" \
-    --set resources.limits.memory=1Gi
-    --set resources.requests.memory=1Gi
+    --set resources.limits.memory=1Gi \
+    --set resources.requests.memory=1Gi \
     --namespace conjur-server 
 ```{{execute}}
 
