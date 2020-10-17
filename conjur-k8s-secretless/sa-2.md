@@ -72,7 +72,26 @@ kubectl exec --namespace conjur-server \
   -- conjurctl account create "default" | tee admin.out
 ```{{execute}}
  
+If `error: unable to upgrade connection: container not found ("conjur-oss")` is returned, don't worry!
+It just means we're a fast learner than the computer! &#129315;	
+Wait 15 seconds and try again.
+ 
+It will generate unique public key & API key for admin, something simiiar to the one below. 
+```
+Created new account 'default'
+Token-Signing Public Key: -----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0oDXDvz2QmdQYEJloDCD
+k5Gd5ipLVsNf41V6Gya28fG4WcPVGhmBUlDFv8uXICBYC+8JBurcY+WF7bMWY/Oz
+1xBnvLyrVvHd629bgQboMODlNZbdQppeV+m2ahBAMTahMnzYE+0YhE9ElIUoywyk
+GSDnkq8z/bKMqWNSgmFMrqeR9v7bTZBHNvHGQnbFxD5Y3mE3nNErmQctl11KfyC/
+cRIKGJCMRFaxQBvy8UppYKCcArrlry8qRM1VbB4v22BIpSoQI4vZZhObxmWTsOPV
+hZeh/T8h8gvW8djShqiW+1I7BVS5gYI9nnMTdk/aVE91LGiCOwO2s0gpTRuv17fO
+hwIDAQAB
+-----END PUBLIC KEY-----
+API key for admin: 54myrp3dgvwsc1x3mgpn1v8hksn33qxcnm3tt7tecryncqg2th4cdq
+```
+ 
 And Conjur is now up & running.
-Please note that we've stored the public key and admin API key in `admin.out` file.
-In production, please keep them safe & secure.
+Please note that we've stored the public key and admin API key in `admin.out` file for demo. 
+For your own environment, please keep them safe & secure.
                   
