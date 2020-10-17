@@ -1,24 +1,79 @@
 
-The application will be scoped to the quick-start-application-ns namespace.
 
-To create the namespace run:
+Let's enable the kubenetes authenicator for application deployment.
 
-`kubectl create namespace quick-start-application-ns`{{execute}}
+The following procedures are covered in this step.
+1. Policy
+2. Initalize CA
+3. Configure Authenticator
 
-`namespace "quick-start-application-ns" created`
+We will use the following configuration in this tutorial:
 
-Next we’ll store the application-credentials in Kubernetes Secrets:
+| Configuration    | Value   |
+|------------------|---------|
+| AUTHENTICATOR_ID | dev     |
+| CONJUR_ACCOUNT   | default |
+| TEST_APP_NAMESPACE_NAME | testapp
+| APPLICATION_SERVICE_ACCOUNT | testapp-sa |
+| AUTHENTICATOR_CLIENT_CONTAINER_NAME | secretless |
+
+For details, please refer to the [Conjur offical doc](https://docs.conjur.org/Latest/en/Content/Integrations/Kubernetes_deployApplicationCluster.htm?tocpath=Integrations%7COpenShift%252C%20Kubernetes%7C_____4)
+
+## Policy
+
+### Policy for human users
+
+At least one user needs write permission to load policy and variables into Conjur. This is standard Conjur policy that creates an administrative group of users for Conjur.
+A sample policy is prepared.
+To review it, execute: `cat conjur/policy_for_human_users.yml`{{execute}}
+
+### Policy for authentication identities
+
+The identities that will be used to authenticate and retrieve secrets from Conjur will also need to be defined in policy and added to the layer that was granted access to the Kubernetes authenticator webservice in the previous policy.
+
+For details about the different identities that can be used in this policy, see [Application Identity in OpenShift/Kubernetes](https://docs.conjur.org/Latest/en/Content/Integrations/Kubernetes_AppIdentity.htm)
+
+A sample policy is prepared.
+To review it, execute: `cat conjur/policy_for_authenticator_identities.yml`{{execute}}
+
+### Policy for the Kubernetes authenticator service
+
+Conjur uses policy to allowlist the applications that have access to the Kubernetes authenticator and store the values necessary to create client certificates for mutual TLS
+A sample policy is prepared.
+To review it, execute: `cat conjur/policy_for_k8s_authenticator_service.yml`{{execute}}
+
+
+### Load Policies into Conjur
+
+To load all 3 policies into Conjur, execute:
 
 ```
-kubectl --namespace quick-start-application-ns \
-  create secret generic quick-start-backend-credentials \
-  --from-literal=address="${REMOTE_DB_URL}" \
-  --from-literal=username="${APPLICATION_DB_USER}" \
-  --from-literal=password="${APPLICATION_DB_INITIAL_PASSWORD}"
+conjur policy load root conjur/policy_for_human_users.yml && \
+conjur policy load root conjur/policy_for_authenticator_identities.yml && \
+conjur policy load root conjur/policy_for_k8s_authenticator_service.yml 
 ```{{execute}}
 
-```
-secret "quick-start-backend-credentials" created
-```
 
-Note: While Kubernetes Secrets are more secure than hard-coded ones, in a real deployment you should secure secrets in a fully-featured vault, like Conjur.
+## Initalize CA
+
+The [Policy for the Kubernetes authenticator service](https://docs.conjur.org/Latest/en/Content/Integrations/Kubernetes_deployApplicationCluster.htm?tocpath=Integrations%7COpenShift%252C%20Kubernetes%7C_____4#Define2) declares variables to hold a CA certificate and key.
+
+To review the script, execute `cat conjur/initialize_ca.sh`{{execute}}
+
+To initialize the CA, execute: 
+```
+chmod +x conjur/initialize_ca.sh
+conjur/initialize_ca.sh
+```{{execute}}
+
+## Configure Conjur authenticators
+
+We have setup the conjur authenicators during Conjur setup!
+
+To verify, execute 
+```
+export POD_NAME=$(kubectl get pods --namespace conjur-server \
+   -l "app=conjur-oss,release=conjur-cluster" \
+   -o jsonpath="{.items[0].metadata.name}")
+kubectl exec --namespace conjur-server  $POD_NAME  --container=conjur-oss -- env | grep CONJUR_AUTHENTICATORS
+```{{execute}}
