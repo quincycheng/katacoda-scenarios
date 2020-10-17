@@ -1,52 +1,88 @@
 
-With our database ready and our credentials safely stored, we can now configure the Secretless Broker. We’ll tell it where to listen for connections and how to proxy them.
 
-After that, the developer’s application can access the database **without ever knowing the application-credentials**.
+Let's enable the kubenetes authenicator for application deployment.
 
-A Secretless Broker configuration file defines the services that Secretless with authenticate to on behalf of your application.
+The following procedures are covered in this step.
+1. Policy
+2. Initalize CA
+3. Configure Authenticator
 
-To create **secretless.yml** in your current directory, run:
+We will use the following configuration in this tutorial:
+
+| Configuration    | Value   |
+|------------------|---------|
+| AUTHENTICATOR_ID | dev     |
+| CONJUR_ACCOUNT   | default |
+| TEST_APP_NAMESPACE_NAME | testapp
+| APPLICATION_SERVICE_ACCOUNT | testapp-sa |
+| AUTHENTICATOR_CLIENT_CONTAINER_NAME | secretless |
+
+For details, please refer to the [Conjur offical doc](https://docs.conjur.org/Latest/en/Content/Integrations/Kubernetes_deployApplicationCluster.htm?tocpath=Integrations%7COpenShift%252C%20Kubernetes%7C_____4)
+
+## Policy
+
+### Policy for human users
+
+At least one user needs write permission to load policy and variables into Conjur. This is standard Conjur policy that creates an administrative group of users for Conjur.
+A sample policy is prepared.
+To review it, execute: `cat conjur/policy_for_human_users.yml`{{execute}}
+
+### Policy for authentication identities
+
+The identities that will be used to authenticate and retrieve secrets from Conjur will also need to be defined in policy and added to the layer that was granted access to the Kubernetes authenticator webservice in the previous policy.
+
+For details about the different identities that can be used in this policy, see [Application Identity in OpenShift/Kubernetes](https://docs.conjur.org/Latest/en/Content/Integrations/Kubernetes_AppIdentity.htm)
+
+A sample policy is prepared.
+To review it, execute: `cat conjur/policy_for_authenticator_identities.yml`{{execute}}
+
+### Policy for the Kubernetes authenticator service
+
+Conjur uses policy to allowlist the applications that have access to the Kubernetes authenticator and store the values necessary to create client certificates for mutual TLS
+A sample policy is prepared.
+To review it, execute: `cat conjur/policy_for_k8s_authenticator_service.yml`{{execute}}
+
+
+### Load Policies into Conjur
+
+To load all 3 policies into Conjur, execute:
 
 ```
-cat << EOF > secretless.yml
-version: "2"
-services:
-  pets-pg:
-    protocol: pg
-    listenOn: tcp://localhost:5432
-    credentials:
-      address:
-        from: kubernetes
-        get: quick-start-backend-credentials#address
-      username:
-        from: kubernetes
-        get: quick-start-backend-credentials#username
-      password:
-        from: kubernetes
-        get: quick-start-backend-credentials#password
-EOF
+conjur policy load root conjur/policy_for_human_users.yml && \
+conjur policy load root conjur/policy_for_authenticator_identities.yml && \
+conjur policy load root conjur/policy_for_k8s_authenticator_service.yml 
 ```{{execute}}
 
-Here’s what this does:
 
-- Defines a service called pets-pg that listens for PostgreSQL connections on localhost:5432
-- Says that the database address, username and password are stored in Kubernetes Secrets
-- Lists the ids of those credentials within Kubernetes Secrets
+## Initalize CA
 
-Note: This configuration is shared by all Secretless Broker sidecar containers. There is one Secretless sidecar in every application Pod replica.
+The [Policy for the Kubernetes authenticator service](https://docs.conjur.org/Latest/en/Content/Integrations/Kubernetes_deployApplicationCluster.htm?tocpath=Integrations%7COpenShift%252C%20Kubernetes%7C_____4#Define2) declares variables to hold a CA certificate and key.
 
-Note: Since we don't specify an `sslmode` in the Secretless Broker config, it will use the default `require` value.
+To review the script, execute `cat conjur/initialize_ca.sh`{{execute}}
 
-Next we create a Kubernetes `ConfigMap` from this secretless.yml:
-
+To initialize the CA, execute: 
 ```
-kubectl --namespace quick-start-application-ns \
-  create configmap \
-  quick-start-application-secretless-config \
-  --from-file=secretless.yml
+chmod +x conjur/initialize_ca.sh
+conjur/initialize_ca.sh
 ```{{execute}}
 
-```
-configmap "quick-start-application-secretless-config" created
+## Configure Conjur authenticators
 
+We have setup the conjur authenicators during Conjur setup!
+
+To verify, execute 
 ```
+export POD_NAME=$(kubectl get pods --namespace conjur-server \
+   -l "app=conjur-oss,release=conjur-cluster" \
+   -o jsonpath="{.items[0].metadata.name}")
+kubectl exec --namespace conjur-server  $POD_NAME  --container=conjur-oss -- env | grep CONJUR_AUTHENTICATORS
+```{{execute}}
+
+
+
+
+
+
+
+
+
