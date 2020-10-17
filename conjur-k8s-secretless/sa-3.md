@@ -28,6 +28,11 @@ To initialize the client, execute:
 
 Trust this certificate: `yes`{{execute}}
 
+```
+Wrote certificate to /root/conjur-default.pem
+Wrote configuration to /root/.conjurrc
+```
+
 ## Login 
 
 Now, we will need to logon to Conjur CLI.
