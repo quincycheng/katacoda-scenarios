@@ -76,6 +76,12 @@ We'll need to get the pod name of Conjur.
    -o jsonpath="{.items[0].metadata.name}")
 ```{{execute}}
 
+if the following error occurs, please wait for 10 seconds and try the above command again
+```
+error: unable to upgrade connection: container not found ("conjur-oss")
+```
+
+
 ...in order to create an account, let's call it `default`
 
 ```
