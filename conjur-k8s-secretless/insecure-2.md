@@ -16,6 +16,6 @@ To add a new message with a random name, execute:
 `curl  -d "{\"name\": \"$(shuf -n 1 /usr/share/dict/american-english)\"}" -H "Content-Type: application/json" $URL/pet`{{execute}}
 
 Now let's list all the messages by executing:
-`curl $URL/pets`{{execute}}
+`curl -s $URL/pets | jq .`{{execute}}
 
 You can repeat the above actions to create & review multiple messages.
