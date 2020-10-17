@@ -60,9 +60,8 @@ helm install conjur-cluster cyberark/conjur-oss \
      --set ssl.hostname=conjur.demo.com,dataKey="$(docker run --rm cyberark/conjur data-key generate)",authenticators="authn-k8s/dev\,
  authn" \
      --set postgres.persistentVolume.create=false \
-     --set resources.limits.memory=1Gi \
-     --set resources.requests.memory=1Gi \
-     --set servie.external.enabled=false \
+     --set service.internal.port=443
+     --set service.external.enabled=false \
      --namespace conjur-server
 ```{{execute}}
 
@@ -116,9 +115,9 @@ Typically we will configure it in the DNS system.
 This time, for demo purpose, we'll simply update the `/etc/hosts` file
 
 ```
-export SERVICE_IP=$(kubectl get svc --namespace conjur \
-  conjur-oss-ingress \
-  -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+export CONJUR_URL=$(kubectl describe svc conjur-cluster-conjur-oss -n conjur-server |grep Endpoints | awk '{print $2}')
+export SERVICE_IP=$(echo $CONJUR_URL | awk  -F ':' '{print $1}')
+
 echo "$SERVICE_IP conjur.demo.com" >> /etc/hosts
 ```{{execute}}
 
