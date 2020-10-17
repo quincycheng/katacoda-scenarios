@@ -6,9 +6,15 @@ In a Secretless Broker deployment, when a client needs access to a Target Servic
 
 The following procedures are covered in this step:
 
-1. Add the app to Conjur policy
-2. Grant Conjur access to the pods in app namespace
-3. Store Conjur SSL cert in a Config Map
+1. Add the secrets to Conjur
+2. Add the app to Conjur policy
+3. Grant Conjur access to the pods in app namespace
+4. Store Conjur SSL cert in a Config Map
+
+## Add the secrets to Conjur
+
+
+
 
 ## Add the app to Conjur policy
 
