@@ -18,6 +18,9 @@ We'll create a layer, create & set 4 variables as secrets, and grant the layer t
 `conjur load policy root /root/conjur/app-layer.yml`{{execute}}
 `conjur load policy root /root/conjur/app-secrets.yml`{{execute}}
 `conjur variable values add app/secret/testapp/db-password "5b3e5f75cb3cdc725fe40318"`{{execute}}
+`conjur variable values add app/secret/testapp/db-user "test_app"`{{execute}}
+`conjur variable values add app/secret/testapp/db-url "postgresql://testapp-db.testapp.svc.cluster.local:5432/postgres"`{{execute}}
+`conjur variable values add app/secret/testapp/db-platform "postgres"`{{execute}}
 
 
 
