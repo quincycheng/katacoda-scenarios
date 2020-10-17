@@ -13,10 +13,8 @@ Conjur CLI client can be either installed as [Ruby gem](https://docs.conjur.org/
 In order to have the best of both worlds, we will create an alias to execute the CLI as container
 
 ```
-export SERVICE_IP=$(kubectl get svc \
-  --namespace conjur-server \
-  conjur-cluster-conjur-oss-ingress \
-  -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+export CONJUR_URL=$(kubectl describe svc conjur-cluster-conjur-oss -n conjur-server |grep Endpoints | awk '{print $2}')
+export SERVICE_IP=$(echo $CONJUR_URL | awk  -F ':' '{print $1}')
                                           
 alias conjur='docker run --rm -it --add-host conjur.demo.com:$SERVICE_IP -v $(pwd)/mydata/:/root cyberark/conjur-cli:5 '
 ```
