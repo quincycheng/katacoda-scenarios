@@ -6,7 +6,7 @@ To get the endpoint of the service, execute:
 Let's verify the URL, it should be an IP & port combination
 `echo $URL`{{execute}}
 
-If it said `none` or something else, please wait for 10 seconds and try the first command to get the endpoint again
+If it said `<none>` or empty, please wait for 10 seconds and try the first command to get the endpoint again
 
 ## Test the app
 
