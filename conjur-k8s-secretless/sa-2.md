@@ -92,10 +92,10 @@ kubectl exec --namespace conjur-server \
 ```{{execute}}
  
 If `error: unable to upgrade connection: container not found ("conjur-oss")` is returned, don't worry!
-It just means we're a fast learner than the computer! &#129315;	
-Wait 15 seconds and try again.
+It just means we're faster than the computer! &#129315;	
+Wait for a moment and try again.
  
-It will generate unique public key & API key for admin, something simiiar to the one below. 
+It should generate unique public key & API key for admin, something simiiar to the one below. 
 ```
 Created new account 'default'
 Token-Signing Public Key: -----BEGIN PUBLIC KEY-----
