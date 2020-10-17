@@ -60,7 +60,6 @@ helm install conjur-cluster cyberark/conjur-oss \
      --set ssl.hostname=conjur.demo.com,dataKey="$(docker run --rm cyberark/conjur data-key generate)",authenticators="authn-k8s/dev\,
  authn" \
      --set postgres.persistentVolume.create=false \
-     --set service.internal.port=443 \
      --set service.external.enabled=false \
      --namespace conjur-server
 ```{{execute}}
