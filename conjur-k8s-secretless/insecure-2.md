@@ -1,20 +1,24 @@
-When we deploy the application, the database secret is embedded in the configuration
+## Get the URL
 
-`cat insecure/app.yml`{{execute}}
+To get the endpoint of the service, execute:
+`export URL=$(kubectl describe  service testapp-insecure --namespace=testapp |grep Endpoints | awk '{print $2}'  )`{{execute}}
 
-Can you find it? It's at the end of the configuration.
-```
-          - name: DB_USERNAME
-            value: test_app
-          - name: DB_PASSWORD
-            value: 5b3e5f75cb3cdc725fe40318
-```
+Let's verify the URL, it should be an IP & port combination
+`echo $URL`{{execute}}
 
-Who has reviewed it?
-When did it happen?
-Can you track it?
+If it said `none` or something else, please wait for 10 seconds and try the first command to get the endpoint again
 
-Yup, that's the risk we're talking about.
+## Test the app
 
-Let's fix it!
+To list all pet messages, execute:
+`curl $URL/pets`{{execute}}
 
+If you exeucte the very first time, it should return `[]`, which means it's empty
+
+To add a new message with a random name, execute:
+`curl  -d "{\"name\": \"$(shuf -n 1 /usr/share/dict/american-english)\"}" -H "Content-Type: application/json" $URL/pet`{{execute}}
+
+Now let's list all pet messages again by executing:
+`curl $URL/pets`{{execute}}
+
+You can repeat the above actions to create & review multiple entries.
