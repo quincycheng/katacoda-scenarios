@@ -48,9 +48,9 @@ To review it, execute: `cat conjur/policy_for_k8s_authenticator_service.yml`{{ex
 To load all 3 policies into Conjur, execute:
 
 ```
-conjur policy load root conjur/policy_for_human_users.yml && \
-conjur policy load root conjur/policy_for_authenticator_identities.yml && \
-conjur policy load root conjur/policy_for_k8s_authenticator_service.yml 
+conjur policy load root /root/conjur/policy_for_human_users.yml && \
+conjur policy load root /root/conjur/policy_for_authenticator_identities.yml && \
+conjur policy load root /root/conjur/policy_for_k8s_authenticator_service.yml 
 ```{{execute}}
 
 
