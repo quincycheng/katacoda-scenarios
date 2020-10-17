@@ -1,9 +1,21 @@
 
-## Setup Conjur 
 
+In this step, we'll preform the following steps to get Conjur up & running.
+
+1. Create a namespace for Conjur
+2. Setting up Helm
+3. Create a Conjur Account
+4. Setting up FQDN
+
+## Namespace
+
+To create a namespace for Conjur, execute:
 ```
 kubectl create namespace conjur-server
 ```{{execute}}
+
+
+## Helm 
 
 Let's install Conjur using Helm.
 
@@ -56,6 +68,9 @@ helm install conjur-cluster cyberark/conjur-oss \
 
 The system should return a long message showing how to proceed.
 
+
+## Conjur Account
+
 We'll need to get the pod name of Conjur.
 ```
  export POD_NAME=$(kubectl get pods --namespace conjur-server \
@@ -91,7 +106,21 @@ hwIDAQAB
 API key for admin: 54myrp3dgvwsc1x3mgpn1v8hksn33qxcnm3tt7tecryncqg2th4cdq
 ```
  
-And Conjur is now up & running.
 Please note that we've stored the public key and admin API key in `admin.out` file for demo. 
 For your own environment, please keep them safe & secure.
-                  
+
+## FQDN
+
+Let's give our setup a Fully qualified domain name (FQDN) - `conjur.demo.com`
+Typically we will configure it in the DNS system.
+This time, for demo purpose, we'll simply update the `/etc/hosts` file
+
+```
+export SERVICE_IP=$(kubectl get svc --namespace conjur \
+  conjur-oss-ingress \
+  -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+echo "$SERVICE_IP conjur.demo.com" >> /etc/hosts
+```{{execute}}
+
+Great! Conjur is now up & running.
+Let's setup the Conjur client
