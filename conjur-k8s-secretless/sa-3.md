@@ -54,7 +54,7 @@ conjur user update_password -p MySecretP@ss1
 
 Next, Log off & on again with the new password `Cyberark1`
 ```
-conjur authn logout
+conjur authn logout && \
 conjur authn login -u admin
 ```{{execute}}
 
