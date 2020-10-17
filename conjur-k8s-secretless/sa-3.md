@@ -1,72 +1,53 @@
 
 
-In this section, we assume the following:
+In this section, we'll configure the following items for setting up the Conjur client:
 
-- You already have a PostgreSQL database exposed as a Kubernetes service.
-- It’s publicly available via the URL in `REMOTE_DB_URL`
-- You have admin-level database credentials
-- The `SECURITY_ADMIN_USER` and `SECURITY_ADMIN_PASSWORD` environment variables hold those credentials
+1. Alias for CLI
+2. Reset Admin password
+3. Logging in
 
-Note: If you're using your own database server and it's not SSL-enabled, please see the [service authenticator documentation](https://docs.secretless.io/Latest/en/Content/References/handlers/postgres.htm) for how to disable SSL in your Secretless configuration.
 
-If you followed along in the last section, you can run:
+## Alias for Conjur CLI
+
+Conjur CLI client can be either installed as [Ruby gem](https://docs.conjur.org/Latest/en/Content/Tools/CLI_Install_CLI.htm?tocpath=Setup%7C_____2#ruby-gem) or [Docker Container)[https://docs.conjur.org/Latest/en/Content/Tools/CLI_Install_CLI.htm?tocpath=Setup%7C_____2#docker-container]
+In order to have the best of both worlds, we will create an alias to execute the CLI as container
 
 ```
-export SECURITY_ADMIN_USER=security_admin_user
-export SECURITY_ADMIN_PASSWORD=security_admin_password
-export REMOTE_DB_URL="[[HOST_IP]]:30001"
+alias conjur='docker run --rm -it --add-host conjur.demo.com:$SERVICE_IP -v $(pwd)/mydata/:/root cyberark/conjur-cli:5 '
+```
+
+In your own environment, you may wish to add it in shell script file, e.g. `~/.bashrc` or `~/.zshrc`
+
+## Initalize Conjur CLI
+
+
+`conjur init --url conjur.demo.com --account default`{{execute}}
+
+
+## Login 
+
+Now, we will need to logon to Conjur CLI.
+Remember the admin API key?  Don't worry, we can get it by executing `grep admin admin.out`{{execute}}
+
+
+
+## Reset Admin Password
+
+This step is optional.   However, like any other systems, it is highly recommended to change the password regularly.
+Visit [CyberArk.com](https://cyberark.com) to learn how CyberArk can help you to develop and deploy effective identity security strategies.
+
+Let's update our admin password to `Cyberark1`
+```
+conjur user update_password -p Cyberark1
 ```{{execute}}
 
-Next, we’ll create the application database and user, and securely store the user’s credentials:
-
-1. Create the application database
-2. Create the pets table in that database
-3. Create an application user with limited privileges: SELECT and INSERT on the pets table
-4. Store these database application-credentials in Kubernetes secrets.
-
-So we can refer to them later, export the database name and application-credentials as environment variables:
-
+Next, Log off & on again with the new password `Cyberark1`
 ```
-export APPLICATION_DB_NAME=quick_start_db
+conjur authn logout
 
-export APPLICATION_DB_USER=app_user
-export APPLICATION_DB_INITIAL_PASSWORD=app_user_password
 ```{{execute}}
 
-Finally, to perform the 4 steps listed above, run:
 
-```
-docker run --rm -i -e PGPASSWORD=${SECURITY_ADMIN_PASSWORD} postgres:9.6 \
-    psql -U ${SECURITY_ADMIN_USER} "postgres://${REMOTE_DB_URL}/postgres" \
-    << EOSQL
 
-CREATE DATABASE ${APPLICATION_DB_NAME};
 
-/* connect to it */
 
-\c ${APPLICATION_DB_NAME};
-
-CREATE TABLE pets (
-  id serial primary key,
-  name varchar(256)
-);
-
-/* Create Application User */
-
-CREATE USER ${APPLICATION_DB_USER} PASSWORD '${APPLICATION_DB_INITIAL_PASSWORD}';
-
-/* Grant Permissions */
-
-GRANT SELECT, INSERT ON public.pets TO ${APPLICATION_DB_USER};
-GRANT USAGE, SELECT ON SEQUENCE public.pets_id_seq TO ${APPLICATION_DB_USER};
-EOSQL
-```{{execute}}
-
-```
-CREATE DATABASE
-You are now connected to database "quick_start_db" as user "security_admin_user".
-CREATE TABLE
-CREATE ROLE
-GRANT
-GRANT
-```
