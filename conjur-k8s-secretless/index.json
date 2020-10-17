@@ -31,6 +31,7 @@
     ],
     "intro": {
       "text": "intro.md",
+      "code": "launch.sh",
       "credits": "https://www.conjur.org"
    },
     "finish": {
