@@ -36,6 +36,7 @@ helm repo update
 ```{{execute}}
 
 ```
+Hang tight while we grab the latest from your chart repositories...
 ...Successfully got an update from the "cyberark" chart repository
 Update Complete. ⎈ Happy Helming!⎈
 ```
