@@ -3,11 +3,7 @@ Let's deploy an app.
 
 ## Database
 
-
-```
-git clone https://github.com/quincycheng/katacoda-secretless-files.git
-cd katacoda-secretless-files/
-```{{execute}}
+Let's setup a database for the application
 
 `kubectl apply -f db/db.yml`{{execute}}
 
