@@ -1,12 +1,13 @@
 ## Get the URL
 
-To get the endpoint of the service, execute:
-`export URL=$(kubectl describe  service testapp-insecure --namespace=testapp |grep Endpoints | awk '{print $2}'  )`{{execute}}
+To check whether the app is started & get the endpoint of the service, execute:
+```
+export URL=$(kubectl describe  service testapp-insecure --namespace=testapp |grep Endpoints | awk '{print $2}'  )
+curl $URL
+```{{execute}}
 
-Let's verify the URL, it should be an IP & port combination
-`echo $URL`{{execute}}
-
-If it said `<none>` or empty, please wait for a couple of moments and try the first command to get the endpoint again
+If a `curl` error is returned, that means the application is still being started.
+Please wait for a couple of moments and try again
 
 ## Test the app
 
