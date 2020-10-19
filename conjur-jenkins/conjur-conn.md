@@ -1,6 +1,10 @@
 
 The following steps define the connection to the DAP appliance. This is typically a one-time configuration.
 
+You may need to login to Jenkins again after restart.
+Jenkins user name is `admin`{{copy}} and password is `344827fbdbfb40d5aac067c7a07b9230`{{copy}}
+
+
 1. Navigate to Jenkins > Credentials > System > [Global credentials (unrestricted)](https://[[HOST_SUBDOMAIN]]-8081-[[KATACODA_HOST]].environments.katacoda.com//credentials/store/system/domain/_/newCredentials)
 
 2. On the form that appears, configure the login credentials. These are credentials for the Jenkins host to log into DAP.
