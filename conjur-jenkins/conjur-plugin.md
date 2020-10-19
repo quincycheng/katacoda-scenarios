@@ -13,3 +13,8 @@
 
 ![theimage](https://github.com/quincycheng/katacoda-scenarios/raw/master/conjur-jenkins/media/03-plugin_complete.PNG)
 
+```
+Please note that there may be a slight delay in upload.
+The Jenkins may be restarted during the process.
+Please wait for a moment
+```
