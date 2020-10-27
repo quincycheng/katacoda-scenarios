@@ -26,7 +26,7 @@ In your own environment, you may wish to add it in shell script file, e.g. `~/.b
 To initialize the client, execute:
 `conjur init --url https://conjur.demo.com:9443  --account default`{{execute}}
 
-Trust this certificate: `yes`{{execute}}
+Trust this certificate: `yes`{{execute HOST1}}
 
 ```
 Wrote certificate to /root/conjur-default.pem
