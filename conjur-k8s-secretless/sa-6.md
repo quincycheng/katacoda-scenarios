@@ -61,4 +61,136 @@ cat << EOL > ./secretless/app-policy.yml
 EOL
 ```{{execute HOST1}}
 
+You can review the generated policy by `cat secretless/app-policy.yml`{{execute HOST1}}
 
+Let's load the generated policy by executing:
+```
+conjur policy load root secretless/app-policy.yml
+```{{execute HOST1}}
+
+## Grant the Conjur instance access to pods
+
+The bash script snippet below generates a Kubernetes manifest for the following:
+ - A Role with the relevant permissions.
+ - A Role Binding of the application service account to the Role.
+
+This Role and Role Binding combination grants the service account, assigned to the Conjur instance, access to pods in the application namespace.
+
+```
+#!/usr/bin/env bash
+
+. ./secretless/env.sh
+
+cat << EOL > secretless/conjur-authenticator-role.yml
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: conjur-authenticator
+  namespace: ${APP_NAMESPACE}
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["pods", "serviceaccounts"]
+  verbs: ["get", "list"]
+- apiGroups: ["extensions"]
+  resources: [ "deployments", "replicasets"]
+  verbs: ["get", "list"]
+- apiGroups: ["apps"]  # needed on OpenShift 3.7+
+  resources: [ "deployments", "statefulsets", "replicasets"]
+  verbs: ["get", "list"]
+- apiGroups: [""]
+  resources: ["pods/exec"]
+  verbs: ["create", "get"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: conjur-authenticator-role-binding
+  namespace: ${APP_NAMESPACE}
+subjects:
+  - kind: ServiceAccount
+    name: ${OSS_CONJUR_SERVICE_ACCOUNT_NAME}
+    namespace: ${OSS_CONJUR_NAMESPACE}
+roleRef:
+  kind: Role
+  name: conjur-authenticator
+  apiGroup: rbac.authorization.k8s.io
+EOL
+```{{execute HOST1}}
+
+You can review the generated policy by `cat secretless/conjur-authenticator-role.yml`{{execute HOST1}}
+
+Let's load the generated policy by executing:
+```
+kubectl create -f secretless/conjur-authenticator-role.yml
+```{{execute HOST1}}
+
+
+### Store the Conjur SSL certificate in a ConfigMap
+
+Use the following code snippet to fetch the Conjur SSL Certificate:
+
+```
+#!/usr/bin/env bash
+. ./secretless/env.sh
+
+openssl s_client -showcerts \
+  -connect "${CONJUR_APPLIANCE_URL}" </dev/null 2>/dev/null \
+  | sed -n '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > conjur.pem
+```{{execute HOST1}}
+
+
+Use the following code snippet to store the Conjur SSL Certificate:
+```
+#!/usr/bin/env bash
+. ./secretless/env.sh
+
+kubectl \
+  --namespace "${APP_NAMESPACE}" \
+  create configmap \
+  conjur-cert \
+  --from-file=ssl-certificate="conjur.pem"
+```{{execute HOST1}}
+
+### Store the Secretless configuration in a ConfigMap
+Use the following bash script snippet to generate a Secretless configuration that defines how the service connector is setup
+For more information, see the [Secretless documentation](https://docs.secretless.io/)
+
+```
+#!/usr/bin/env bash
+. ./env.sh
+
+cat << EOL > secretless.yml
+version: "2"
+services:
+  app_db:
+    connector: postgres
+    listenOn: tcp://0.0.0.0:3000
+    credentials:
+      host:
+        from: conjur
+        get: ${APP_SECRETS_POLICY_BRANCH}/host
+      port:
+        from: conjur
+        get: ${APP_SECRETS_POLICY_BRANCH}/port
+      username:
+        from: conjur
+        get: ${APP_SECRETS_POLICY_BRANCH}/username
+      password:
+        from: conjur
+        get: ${APP_SECRETS_POLICY_BRANCH}/password
+      sslmode: disable
+EOL
+```{{execute HOST1}}
+
+After generating the Secretless configuration, store it in a ConfigMap manifest by running the following:
+```
+#!/usr/bin/env bash
+. ./secretless/env.sh
+
+kubectl \
+  --namespace "${APP_NAMESPACE}" \
+  create configmap \
+  secretless-config \
+  --from-file=secretless.yml
+```{{execute HOST1}}
