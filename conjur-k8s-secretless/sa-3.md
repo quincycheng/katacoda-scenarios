@@ -17,7 +17,7 @@ export CONJUR_URL=$(kubectl describe svc conjur-cluster-conjur-oss -n conjur-ser
 export SERVICE_IP=$(echo $CONJUR_URL | awk  -F ':' '{print $1}')
                                           
 alias conjur='docker run --rm -it --add-host conjur.demo.com:$SERVICE_IP -v $(pwd):/root cyberark/conjur-cli:5 '
-```{{execute}}
+```{{execute HOST1}}}
 
 In your own environment, you may wish to add it in shell script file, e.g. `~/.bashrc` or `~/.zshrc`
 
@@ -40,7 +40,7 @@ Remember the admin API key?  Don't worry, we can get it by executing `grep admin
 
 ```
 conjur authn login -u admin -p $(grep admin admin.out | cut -c20-)
-```{{execute}}
+```{{execute HOST1}}}
 
 ## Reset Admin Password
 
@@ -50,15 +50,15 @@ Visit [CyberArk.com](https://cyberark.com) to learn how CyberArk can help you to
 Let's update our admin password to `MySecretP@ss1`
 ```
 conjur user update_password -p MySecretP@ss1
-```{{execute}}
+```{{execute HOST1}}}
 
 Next, Log off & on again with the new password `Cyberark1`
 ```
 conjur authn logout && \
 conjur authn login -u admin
-```{{execute}}
+```{{execute HOST1}}}
 
-Please enter admin's password (it will not be echoed): `MySecretP@ss1`{{execute}}
+Please enter admin's password (it will not be echoed): `MySecretP@ss1`{{execute HOST1}}}
 ```
 Logged in
 ```
