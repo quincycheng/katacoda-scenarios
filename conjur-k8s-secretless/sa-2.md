@@ -126,7 +126,7 @@ echo $SERVICE_IP
 ```{{execute HOST1}}
 
 An IP address should be displayed.   If not, that means the service is starting.
-please wait for a moment and repeat the above steps again.
+please wait for a moment and repeat the above step again.
 
 Once the service IP is ready, let's add it to the `/etc/hosts` file
 
