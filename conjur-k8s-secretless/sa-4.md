@@ -25,7 +25,7 @@ For details, please refer to the [Conjur offical doc](https://docs.conjur.org/La
 
 At least one user needs write permission to load policy and variables into Conjur. This is standard Conjur policy that creates an administrative group of users for Conjur.
 A sample policy is prepared.
-To review it, execute: `cat conjur/policy_for_human_users.yml`{{execute}}
+To review it, execute: `cat conjur/policy_for_human_users.yml`{{execute HOST1}}}
 
 ### Policy for authentication identities
 
@@ -34,13 +34,13 @@ The identities that will be used to authenticate and retrieve secrets from Conju
 For details about the different identities that can be used in this policy, see [Application Identity in OpenShift/Kubernetes](https://docs.conjur.org/Latest/en/Content/Integrations/Kubernetes_AppIdentity.htm)
 
 A sample policy is prepared.
-To review it, execute: `cat conjur/policy_for_authenticator_identities.yml`{{execute}}
+To review it, execute: `cat conjur/policy_for_authenticator_identities.yml`{{execute HOST1}}}
 
 ### Policy for the Kubernetes authenticator service
 
 Conjur uses policy to allowlist the applications that have access to the Kubernetes authenticator and store the values necessary to create client certificates for mutual TLS
 A sample policy is prepared.
-To review it, execute: `cat conjur/policy_for_k8s_authenticator_service.yml`{{execute}}
+To review it, execute: `cat conjur/policy_for_k8s_authenticator_service.yml`{{execute HOST1}}}
 
 
 ### Load Policies into Conjur
@@ -51,20 +51,20 @@ To load all 3 policies into Conjur, execute:
 conjur policy load root /root/conjur/policy_for_human_users.yml && \
 conjur policy load root /root/conjur/policy_for_authenticator_identities.yml && \
 conjur policy load root /root/conjur/policy_for_k8s_authenticator_service.yml 
-```{{execute}}
+```{{execute HOST1}}}
 
 
 ## Initalize CA
 
 The [Policy for the Kubernetes authenticator service](https://docs.conjur.org/Latest/en/Content/Integrations/Kubernetes_deployApplicationCluster.htm?tocpath=Integrations%7COpenShift%252C%20Kubernetes%7C_____4#Define2) declares variables to hold a CA certificate and key.
 
-To review the script, execute `cat conjur/initialize_ca.sh`{{execute}}
+To review the script, execute `cat conjur/initialize_ca.sh`{{execute HOST1}}}
 
 To initialize the CA, execute: 
 ```
 chmod +x conjur/initialize_ca.sh
 source conjur/initialize_ca.sh
-```{{execute}}
+```{{execute HOST1}}}
 
 ## Configure Conjur authenticators
 
@@ -76,4 +76,4 @@ export POD_NAME=$(kubectl get pods --namespace conjur-server \
    -l "app=conjur-oss,release=conjur-cluster" \
    -o jsonpath="{.items[0].metadata.name}")
 kubectl exec --namespace conjur-server  $POD_NAME  --container=conjur-oss -- env | grep CONJUR_AUTHENTICATORS
-```{{execute}}
+```{{execute HOST1}}}
