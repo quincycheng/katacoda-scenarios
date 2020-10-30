@@ -127,18 +127,7 @@ kubectl create -f secretless/conjur-authenticator-role.yml
 
 
 ### Store the Conjur SSL certificate in a ConfigMap
-
-Use the following code snippet to fetch the Conjur SSL Certificate:
-
-```
-#!/usr/bin/env bash
-. ./secretless/env.sh
-
-openssl s_client -showcerts \
-  -connect "${CONJUR_APPLIANCE_URL}" </dev/null 2>/dev/null \
-  | sed -n '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > conjur.pem
-```{{execute HOST1}}
-
+The Conjur SSL certificate is avaliable as `conjur-default.pem`
 
 Use the following code snippet to store the Conjur SSL Certificate:
 ```
@@ -149,7 +138,7 @@ kubectl \
   --namespace "${APP_NAMESPACE}" \
   create configmap \
   conjur-cert \
-  --from-file=ssl-certificate="conjur.pem"
+  --from-file=ssl-certificate="conjur-default.pem"
 ```{{execute HOST1}}
 
 ### Store the Secretless configuration in a ConfigMap
@@ -160,7 +149,7 @@ For more information, see the [Secretless documentation](https://docs.secretless
 #!/usr/bin/env bash
 . ./secretless/env.sh
 
-cat << EOL > secretless.yml
+cat << EOL > ./secretless/secretless.yml
 version: "2"
 services:
   app_db:
@@ -192,5 +181,5 @@ kubectl \
   --namespace "${APP_NAMESPACE}" \
   create configmap \
   secretless-config \
-  --from-file=secretless.yml
+  --from-file=./secretless/secretless.yml
 ```{{execute HOST1}}
