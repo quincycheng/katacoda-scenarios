@@ -74,7 +74,7 @@ We'll need to get the pod name of Conjur.
  export POD_NAME=$(kubectl get pods --namespace conjur-server \
    -l "app=conjur-oss,release=conjur-cluster" \
    -o jsonpath="{.items[0].metadata.name}")
-```{{execute HOST1}}}
+```{{execute HOST1}}
 
 if the following error occurs, please wait for 10 seconds and try the above command again
 ```
