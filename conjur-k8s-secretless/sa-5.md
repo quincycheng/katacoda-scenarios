@@ -17,10 +17,14 @@ We'll create a layer, create 4 variables as secrets, and grant the layer to acce
 
 `conjur policy load root /root/secretless/testapp-policy.yml`{{execute HOST1}}
 
+To review the changes, execute: `conjur list`{{execute HOST1}}
 
 Now let's save the secrets in Conjur
 `conjur variable values add app/testapp/secret/db-username "5b3e5f75cb3cdc725fe40318"`{{execute HOST1}}
+
 `conjur variable values add app/testapp/secret/db-user "test_app"`{{execute HOST1}}
+
 `conjur variable values add app/testapp/secret/db-url "postgresql://testapp-db.testapp.svc.cluster.local:5432/postgres"`{{execute HOST1}}
+
 `conjur variable values add app/testapp/secret/db-platform "postgres"`{{execute HOST1}}
 
