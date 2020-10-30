@@ -33,7 +33,6 @@ You can define your host using a variety of Kubernetes resources
 Use the following bash code snippet to generate the policy, named app-policy.yml, to add your application to Kubernetes:
 
 ```
-#!/usr/bin/env bash
 . ./secretless/env.sh
 cat << EOL > ./secretless/app-policy.yml
 ---
@@ -131,7 +130,6 @@ The Conjur SSL certificate is avaliable as `conjur-default.pem`
 
 Use the following code snippet to store the Conjur SSL Certificate:
 ```
-#!/usr/bin/env bash
 . ./secretless/env.sh
 
 kubectl \
@@ -146,7 +144,6 @@ Use the following bash script snippet to generate a Secretless configuration tha
 For more information, see the [Secretless documentation](https://docs.secretless.io/)
 
 ```
-#!/usr/bin/env bash
 . ./secretless/env.sh
 
 cat << EOL > ./secretless/secretless.yml
@@ -174,7 +171,6 @@ EOL
 
 After generating the Secretless configuration, store it in a ConfigMap manifest by running the following:
 ```
-#!/usr/bin/env bash
 . ./secretless/env.sh
 
 kubectl \
