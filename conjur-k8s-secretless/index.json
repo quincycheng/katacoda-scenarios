@@ -38,9 +38,7 @@
     }
   },
   "environment": {
-    "uilayout": "terminal",
-    "showdashboard": true,
-     "dashboards": [{"name": "Minikube Dashboard", "port": 30000}]
+    "uilayout": "terminal"
   },
   "backend": {
     "imageid": "conjur-poc-cluster-running"
