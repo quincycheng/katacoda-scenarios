@@ -10,7 +10,7 @@ Use the following bash script snippet to generate a Kubernetes Deployment manife
 
 cat << EOL > secretless/app-manifest.yml
 ---
-apiVersion: apps/v1beta1
+apiVersion: v1
 kind: Deployment
 metadata:
   labels:
