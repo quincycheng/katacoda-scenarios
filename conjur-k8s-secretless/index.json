@@ -1,5 +1,5 @@
 {
-  "title": "[WIP] Secretless Broker on Kubernetes",
+  "title": "Secretless Broker on Kubernetes",
   "icon": "fa-kubernetes",
   "description": "Learn how to use Secretless Broker on Kubernetes",
   "details": {
@@ -21,13 +21,8 @@
 
       
       { "title": "Steps for Application Developer", "text": "ad-1.md" },
-      { "title": "Sample Application Overview", "text": "ad-2.md" },
-      { "title": "Create Application Deployment Manifest", "text": "ad-3.md" },
-      { "title": "Deploy Application With Secretless Broker", "text": "ad-4.md" },
-      { "title": "Expose Application Publicly", "text": "ad-5.md" },
-      
-      { "title": "Test the Application", "text": "test.md" },
-      { "title": "More details", "text": "more.md" }
+      { "title": "Testing the App", "text": "ad-2.md" },
+      { "title": "Risk?", "text": "ad-3.md" }
 
     ],
     "intro": {
