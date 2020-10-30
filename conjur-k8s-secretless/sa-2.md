@@ -12,7 +12,7 @@ In this step, we'll preform the following steps to get Conjur up & running.
 To create a namespace for Conjur, execute:
 ```
 kubectl create namespace conjur-server
-```{{execute}}
+```{{execute HOST1}}}
 
 
 ## Helm 
@@ -22,7 +22,7 @@ Let's install Conjur using Helm.
 First, we need to add `cyberark` repo to Helm
 ```
 helm repo add cyberark https://cyberark.github.io/helm-charts
-```{{execute}}
+```{{execute HOST1}}}
 
 The response should look like this:
 ```
@@ -47,7 +47,7 @@ Next, we need to add a role binding
 
 ```
 kubectl apply -f conjur/role-binding.yaml
-```{{execute}}
+```{{execute HOST1}}}
 ```
 rolebinding.rbac.authorization.k8s.io/conjur-server-authn-role-binding created
 ```
@@ -62,7 +62,7 @@ helm install conjur-cluster cyberark/conjur-oss \
      --set postgres.persistentVolume.create=false \
      --set service.external.enabled=false \
      --namespace conjur-server
-```{{execute}}
+```{{execute HOST1}}}
 
 The system should return a long message showing how to proceed.
 
@@ -74,7 +74,7 @@ We'll need to get the pod name of Conjur.
  export POD_NAME=$(kubectl get pods --namespace conjur-server \
    -l "app=conjur-oss,release=conjur-cluster" \
    -o jsonpath="{.items[0].metadata.name}")
-```{{execute}}
+```{{execute HOST1}}}
 
 if the following error occurs, please wait for 10 seconds and try the above command again
 ```
@@ -89,7 +89,7 @@ kubectl exec --namespace conjur-server \
     $POD_NAME \
   --container=conjur-oss \
   -- conjurctl account create "default" | tee admin.out
-```{{execute}}
+```{{execute HOST1}}}
  
 If `error: unable to upgrade connection: container not found ("conjur-oss")` is returned, don't worry!
 It just means we're faster than the computer! &#129315;	
@@ -124,7 +124,7 @@ export CONJUR_URL=$(kubectl describe svc conjur-cluster-conjur-oss -n conjur-ser
 export SERVICE_IP=$(echo $CONJUR_URL | awk  -F ':' '{print $1}')
 
 echo "$SERVICE_IP conjur.demo.com" >> /etc/hosts
-```{{execute}}
+```{{execute HOST1}}}
 
 Great! Conjur is now up & running.
 Let's setup the Conjur client
