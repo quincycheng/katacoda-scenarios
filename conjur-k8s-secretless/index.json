@@ -16,8 +16,10 @@
       { "title": "Setup Conjur in Kubernetes", "text": "sa-2.md" },
       { "title": "Prepare Conjur Client", "text": "sa-3.md" },
       { "title": "Enable Authenticator", "text": "sa-4.md" },
-      { "title": "Prepare for App Deployment", "text": "sa-5.md" },
+      { "title": "Enrolling App", "text": "sa-5.md" },
+      { "title": "Secretless Broker Sidecar by Admin", "text": "sa-6.md" },
 
+      
       { "title": "Steps for Application Developer", "text": "ad-1.md" },
       { "title": "Sample Application Overview", "text": "ad-2.md" },
       { "title": "Create Application Deployment Manifest", "text": "ad-3.md" },
