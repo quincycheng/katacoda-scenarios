@@ -15,19 +15,17 @@ The following procedures are covered in this step:
 
 We'll create a layer, create & set 4 variables as secrets, and grant the layer to access all the variables.
 
-`conjur load policy root /root/conjur/app-layer.yml`{{execute HOST1}}}
-`conjur load policy root /root/conjur/app-secrets.yml`{{execute HOST1}}}
-`conjur variable values add app/secret/testapp/db-password "5b3e5f75cb3cdc725fe40318"`{{execute HOST1}}}
-`conjur variable values add app/secret/testapp/db-user "test_app"`{{execute HOST1}}}
-`conjur variable values add app/secret/testapp/db-url "postgresql://testapp-db.testapp.svc.cluster.local:5432/postgres"`{{execute HOST1}}}
-`conjur variable values add app/secret/testapp/db-platform "postgres"`{{execute HOST1}}}
-
-
+`conjur load policy root /root/conjur/app-layer.yml`{{execute HOST1}}
+`conjur load policy root /root/conjur/app-secrets.yml`{{execute HOST1}}
+`conjur variable values add app/secret/testapp/db-password "5b3e5f75cb3cdc725fe40318"`{{execute HOST1}}
+`conjur variable values add app/secret/testapp/db-user "test_app"`{{execute HOST1}}
+`conjur variable values add app/secret/testapp/db-url "postgresql://testapp-db.testapp.svc.cluster.local:5432/postgres"`{{execute HOST1}}
+`conjur variable values add app/secret/testapp/db-platform "postgres"`{{execute HOST1}}
 
 ## Add the app to Conjur policy
 
 Next, we will add the app to Conjur policy
 
-To review the policy, execute `cat conjur/app-policy.yml`{{execute HOST1}}}
+To review the policy, execute `cat conjur/app-policy.yml`{{execute HOST1}}
 
-`conjur load policy root /root/conjur/app-policy.yml`{{execute HOST1}}}
+`conjur load policy root /root/conjur/app-policy.yml`{{execute HOST1}}
