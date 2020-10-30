@@ -52,7 +52,7 @@ Let's update our admin password to `MySecretP@ss1`
 conjur user update_password -p MySecretP@ss1
 ```{{execute HOST1}}}
 
-Next, Log off & on again with the new password `Cyberark1`
+Next, Log off & on again with the new password `MySecretP@ss1`
 ```
 conjur authn logout && \
 conjur authn login -u admin
