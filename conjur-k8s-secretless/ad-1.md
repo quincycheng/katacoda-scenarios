@@ -6,9 +6,9 @@ Use the following bash script snippet to generate a Kubernetes Deployment manife
 ```
 #!/usr/bin/env bash
 
-. ./env.sh
+. ./secretless/env.sh
 
-cat << EOL > app-manifest.yml
+cat << EOL > secretless/app-manifest.yml
 ---
 apiVersion: apps/v1beta1
 kind: Deployment
@@ -93,3 +93,9 @@ spec:
             defaultMode: 420
 EOL
 ```{{execute HOST1}}
+
+After generating the application manifest, deploy the application by running:
+```
+#!/usr/bin/env bash
+kubectl create -f secretless/app-manifest.yml
+``{{execute HOST1}}
