@@ -4,13 +4,11 @@ Use the following bash script snippet to generate a Kubernetes Deployment manife
 
 
 ```
-#!/usr/bin/env bash
-
 . ./secretless/env.sh
 
 cat << EOL > secretless/app-manifest.yml
 ---
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
