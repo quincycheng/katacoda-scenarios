@@ -6,4 +6,4 @@ You know only one thing – the name of the database:
 
 ```
 export APPLICATION_DB_NAME=quick_start_db
-```{{execute}}
+```{{execute HOST1}}}
