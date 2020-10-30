@@ -122,7 +122,15 @@ This time, for demo purpose, we'll simply update the `/etc/hosts` file
 ```
 export CONJUR_URL=$(kubectl describe svc conjur-cluster-conjur-oss -n conjur-server |grep Endpoints | awk '{print $2}')
 export SERVICE_IP=$(echo $CONJUR_URL | awk  -F ':' '{print $1}')
+echo $SERVICE_IP
+```{{execute HOST1}}
 
+An IP address should be displayed.   If not, that means the service is starting.
+please wait for a moment and repeat the above steps again.
+
+Once the service IP is ready, let's add it to the `/etc/hosts` file
+
+```
 echo "$SERVICE_IP conjur.demo.com" >> /etc/hosts
 ```{{execute HOST1}}
 
