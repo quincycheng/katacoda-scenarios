@@ -65,7 +65,7 @@ You can review the generated policy by `cat secretless/app-policy.yml`{{execute 
 
 Let's load the generated policy by executing:
 ```
-conjur policy load root secretless/app-policy.yml
+conjur policy load root /root/secretless/app-policy.yml
 ```{{execute HOST1}}
 
 ## Grant the Conjur instance access to pods
@@ -158,7 +158,7 @@ For more information, see the [Secretless documentation](https://docs.secretless
 
 ```
 #!/usr/bin/env bash
-. ./env.sh
+. ./secretless/env.sh
 
 cat << EOL > secretless.yml
 version: "2"
