@@ -98,4 +98,4 @@ After generating the application manifest, deploy the application by running:
 ```
 #!/usr/bin/env bash
 kubectl create -f secretless/app-manifest.yml
-``{{execute HOST1}}
+```{{execute HOST1}}
