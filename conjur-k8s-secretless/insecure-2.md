@@ -1,3 +1,5 @@
+
+
 ## Get the URL
 
 To check whether the app is started & get the endpoint of the service, execute:
