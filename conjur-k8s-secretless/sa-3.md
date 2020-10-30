@@ -40,7 +40,7 @@ Remember the admin API key?  Don't worry, we can get it by executing `grep admin
 
 ```
 conjur authn login -u admin -p $(grep admin admin.out | cut -c20-)
-```{{execute HOST1}}}
+```{{execute HOST1}}
 
 ## Reset Admin Password
 
@@ -56,9 +56,9 @@ Next, Log off & on again with the new password `Cyberark1`
 ```
 conjur authn logout && \
 conjur authn login -u admin
-```{{execute HOST1}}}
+```{{execute HOST1}}
 
-Please enter admin's password (it will not be echoed): `MySecretP@ss1`{{execute HOST1}}}
+Please enter admin's password (it will not be echoed): `MySecretP@ss1`{{execute HOST1}}
 ```
 Logged in
 ```
