@@ -62,7 +62,6 @@ To review the script, execute `cat conjur/initialize_ca.sh`{{execute HOST1}}
 
 To initialize the CA, execute: 
 ```
-chmod +x conjur/initialize_ca.sh
 source conjur/initialize_ca.sh
 ```{{execute HOST1}}
 
