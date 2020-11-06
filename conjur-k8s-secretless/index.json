@@ -21,7 +21,7 @@
 
       
       { "title": "Steps for Application Developer", "text": "ad-1.md" },
-      { "title": "Testing the App", "text": "ad-2.md" },
+      { "title": "Testing the App with Secretless Broker", "text": "ad-2.md" },
       { "title": "Risk?", "text": "ad-3.md" }
 
     ],
