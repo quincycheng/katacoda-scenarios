@@ -6,7 +6,14 @@ Use the following bash script snippet to generate a Kubernetes Deployment manife
 ```
 . ./secretless/env.sh
 
-cat << EOL > secretless/app-manifest.yml
+cat << EOL > secretless/testapp-secure.yml
+---
+kind: ServiceAccount
+metadata:
+  labels:
+    k8s-app: testapp-secure
+  name: testapp-secure-sa
+  namespace: testapp
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -94,6 +101,5 @@ EOL
 
 After generating the application manifest, deploy the application by running:
 ```
-#!/usr/bin/env bash
-kubectl create -f secretless/app-manifest.yml
+kubectl apply -f secretless/testapp-secure.yml
 ```{{execute HOST1}}
