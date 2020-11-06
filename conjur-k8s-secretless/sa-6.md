@@ -26,8 +26,6 @@ The table below summarizes what we have set up so far:
 A code snippet contains all the variables defined in the table above has been prepared for you.
 To review it, execute `cat secretless/env.sh`{{execute HOST1}}
 
-Let's make sure it is executable by `chmod +x secretless/env.sh`{{execute HOST1}}
-
 ## Add your application to Conjur policy
 You can define your host using a variety of Kubernetes resources
 Use the following bash code snippet to generate the policy, named app-policy.yml, to add your application to Kubernetes:
@@ -76,8 +74,6 @@ The bash script snippet below generates a Kubernetes manifest for the following:
 This Role and Role Binding combination grants the service account, assigned to the Conjur instance, access to pods in the application namespace.
 
 ```
-#!/usr/bin/env bash
-
 . ./secretless/env.sh
 
 cat << EOL > secretless/conjur-authenticator-role.yml
