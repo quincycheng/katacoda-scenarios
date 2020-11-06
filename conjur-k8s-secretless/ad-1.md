@@ -8,10 +8,9 @@ Use the following bash script snippet to generate a Kubernetes Deployment manife
 
 cat << EOL > secretless/testapp-secure.yml
 ---
+apiVersion: v1
 kind: ServiceAccount
 metadata:
-  labels:
-    k8s-app: testapp-secure
   name: testapp-secure-sa
   namespace: testapp
 ---
