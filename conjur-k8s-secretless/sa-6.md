@@ -145,9 +145,9 @@ For more information, see the [Secretless documentation](https://docs.secretless
 cat << EOL > ./secretless/secretless.yml
 version: "2"
 services:
-  app_db:
-    connector: postgres
-    listenOn: tcp://0.0.0.0:3000
+  postgres-db:
+    connector: pg
+    listenOn: tcp://0.0.0.0:5432
     credentials:
       host:
         from: conjur
