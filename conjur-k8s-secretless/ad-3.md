@@ -1,7 +1,7 @@
 
 
 Let's review the risk
-`cat secretless/app-manifest.yml`{{execute HOST1}}
+`cat secretless/testapp-secure.yml`{{execute HOST1}}
 
 Can you find the embedded secret?
 
