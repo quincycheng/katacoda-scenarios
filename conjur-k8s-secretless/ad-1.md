@@ -1,18 +1,34 @@
 ![application developer](https://secretless.io/img/application_developer.jpg)
 ## You are now the application developer
-Use the following bash script snippet to generate a Kubernetes Deployment manifest with an application using Secretless. The code snippet includes a container representing the application called 'app'. Modify this container with your application's container definition.
 
+Let's have another set of environment variables, which does NOT contain any secrets for the developer.
+To review it, execute: `cat ./secretless/developer-env.sh`{{execute HOST1}}
+
+Now let's create the yaml file to deploy the app with secretless broker.
 
 ```
-. ./secretless/env.sh
+. ./secretless/developer-env.sh
 
 cat << EOL > secretless/testapp-secure.yml
 ---
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: testapp-secure-sa
+  name: testapp-sa
   namespace: testapp
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: testapp-secure
+  namespace: testapp
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: testapp-secure
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -32,6 +48,11 @@ spec:
         app: "${APP_NAME}"
     spec:
       serviceAccountName: "${APP_SERVICE_ACCOUNT_NAME}"
+      hostAliases:
+      - ip: "10.105.68.126"
+        hostnames:
+        - "conjur.demo.com"
+
       containers:
       - image: cyberark/demo-app
         imagePullPolicy: IfNotPresent
@@ -64,7 +85,7 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: status.podIP
-         
+
           - name: CONJUR_APPLIANCE_URL
             value: "${CONJUR_APPLIANCE_URL}"
           - name: CONJUR_AUTHN_URL
