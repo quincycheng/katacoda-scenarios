@@ -6,8 +6,7 @@ Now let's test the app again
 
 To check whether the app is started & get the endpoint of the service, execute:
 ```
-export URL=$(kubectl describe  service testapp-secure --namespace=testapp |grep Endpoints | awk '{print $2}'  ) && \
-curl $URL/pets
+export URL=$(kubectl describe  service testapp-secure --namespace=testapp |grep Endpoints | awk '{print $2}' )
 ```{{execute HOST1}}
 
 If a `curl` error is returned, that means the application is still being started.
