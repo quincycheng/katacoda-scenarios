@@ -14,7 +14,7 @@ We will use the following configuration in this tutorial:
 | AUTHENTICATOR_ID | dev     |
 | CONJUR_ACCOUNT   | default |
 | TEST_APP_NAMESPACE_NAME | testapp
-| APPLICATION_SERVICE_ACCOUNT | testapp-sa |
+| APPLICATION_SERVICE_ACCOUNT | testapp-secure-sa |
 | AUTHENTICATOR_CLIENT_CONTAINER_NAME | secretless |
 
 For details, please refer to the [Conjur offical doc](https://docs.conjur.org/Latest/en/Content/Integrations/Kubernetes_deployApplicationCluster.htm?tocpath=Integrations%7COpenShift%252C%20Kubernetes%7C_____4)
