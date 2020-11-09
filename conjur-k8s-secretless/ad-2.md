@@ -11,7 +11,6 @@ export URL=$(kubectl describe  service testapp-secure --namespace=testapp |grep 
 
 If a `curl` error is returned, that means the application is still being started.
 Please wait for a couple of moments and try again
-It should return `[]` is the application is up
 
 ## Test the app
 
