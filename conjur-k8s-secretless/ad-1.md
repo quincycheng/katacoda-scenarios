@@ -14,7 +14,7 @@ cat << EOL > secretless/testapp-secure.yml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: testapp-sa
+  name: testapp-secure-sa
   namespace: testapp
 ---
 apiVersion: v1
