@@ -50,7 +50,7 @@ Visit [CyberArk.com](https://cyberark.com) to learn how CyberArk can help you to
 Let's update our admin password to `MySecretP@ss1`
 ```
 conjur user update_password -p MySecretP@ss1
-```{{execute HOST1}}}
+```{{execute HOST1}}
 
 Next, Log off & on again with the new password `MySecretP@ss1`
 ```
