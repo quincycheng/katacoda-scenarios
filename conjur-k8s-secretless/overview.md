@@ -7,7 +7,7 @@ To achieve that goal, you’ll play two roles in this tutorial:
 
 The situation looks like this:
 
-![the situation](https://secretless.io/img/secretless_overview.jpg)
+![the situation](https://raw.githubusercontent.com/quincycheng/katacoda-scenarios/master/conjur-k8s-secretless/resources/Presentation1.png)
 
 Specifically, we will:
 
