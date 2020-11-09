@@ -13,22 +13,16 @@ Specifically, we will:
 
 **As the security admin:**
 
-Create a PostgreSQL database
-Create a DB user for the application
-Add that user’s credentials to Kubernetes Secrets
-Configure Secretless to connect to PostgreSQL using those credentials
+1. Setup Conjur in Kubernetes
+2. Prepare Conjur Client
+3. Enable Authenticator
+4. Enrolling App
+5. Config Secretless Broker Sidecar
 
 **As the application developer:**
-
-Configure the application to connect to PostgreSQL via Secretless
-Deploy the application and the Secretless sidecar
+- Deploy the application and the Secretless sidecar
 
 Prerequisites
 To run through this tutorial, all you need is this course!
 
-
-To run through this tutorial **in your own environment**, you will need:
-
-- A running Kubernetes cluster (you can use minikube to run a cluster locally)
-- kubectl configured to point to the cluster
-- Docker CLI
+Let's get started!
