@@ -1,5 +1,5 @@
 {
-  "title": "Using Conjur to secure SSH secrets for Ansible",
+  "title": "Secure Ansible Playbook Secrets with Conjur",
   "description": "Learn how to retreive SSH secrets from Conjur for Ansible connecting to multiple hosts",
   "icon": "fa-redhat",
   "details": {
