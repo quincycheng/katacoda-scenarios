@@ -1,8 +1,6 @@
 {
   "title": "Secure Ansible Playbook Secrets with Conjur",
-  "description": "With this fully interactive hosted tutorial you will 
-  learn how to secure Ansible automation by keeping unsecured secrets out 
-  of Playbooks with Conjur open source secrets management.",
+  "description": "With this fully interactive hosted tutorial you will learn how to secure Ansible automation by keeping unsecured secrets out of Playbooks with Conjur open source secrets management.",
   "icon": "fa-redhat",
   "details": {
     "steps": [
