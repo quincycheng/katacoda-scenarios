@@ -2,7 +2,7 @@
 
 Here comes a typical ansible playbook & inventory
 
-### inventory
+### Inventory file 
 
 First, we will need to create an inventory file about our servers
 
