@@ -9,10 +9,6 @@
         "text": "accounts.md"
       },
       {
-        "title": "Install Ansible",
-        "text": "ansible.md"
-      },
-      {
         "title": "Typical Playbook",
         "text": "insecure-playbook.md"
       },
@@ -36,6 +32,10 @@
       {
         "title": "Conjur Policy",
         "text": "policy.md"
+      },
+      {
+        "title": "Conjur Policy",
+        "text": "load-policy.md"
       },
       {
         "title": "App Identity",
