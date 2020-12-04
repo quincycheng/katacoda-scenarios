@@ -13,4 +13,13 @@ Typically that'll involve:
 3. Prepare an inventory file to specify the connection details of the managed servers
 4. Prepare a playbook to specifiy the tasks
 
+# How it works?
+
+1. Install Cojur Role and Lookup Plug-in
+2. Load an Conjur policy that grants the Ansible control machine privileges on secrets
+3. Run a playbook containing references to secrets stored in Conjur
+4. Authenticate the control machine to Conjur
+5. Issue the secrets
+6. Playbook runs containing secret
+
 Let's get started!
