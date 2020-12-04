@@ -15,6 +15,8 @@ Typically that'll involve:
 
 # How it works?
 
+![How it works](https://raw.githubusercontent.com/quincycheng/katacoda-scenarios/master/conjur-ansible-ssh/media/ansible.svg)
+
 1. Install Cojur Role and Lookup Plug-in
 2. Load an Conjur policy that grants the Ansible control machine privileges on secrets
 3. Run a playbook containing references to secrets stored in Conjur
