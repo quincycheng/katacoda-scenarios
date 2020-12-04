@@ -4,7 +4,7 @@ With this fully interactive hosted tutorial you will learn how to secure Ansible
 
 # How it works?
 <table><tr><td>
-<img src="https://raw.githubusercontent.com/quincycheng/katacoda-scenarios/master/conjur-ansible-ssh/media/ansible.svg"/>
+<img src="https://raw.githubusercontent.com/quincycheng/katacoda-scenarios/master/conjur-ansible-ssh/media/ansible.svg" width="600px"/>
     </td><td>
 1. Install Cojur Role and Lookup Plug-in
 2. Load an Conjur policy that grants the Ansible control machine privileges on secrets
