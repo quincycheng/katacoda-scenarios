@@ -26,4 +26,4 @@ unzip v1.0.zip
 
 # Add service01 a/c
 useradd -m -d /tmp service01
-echo -e "W/4m=cS6QSZSc*nd\nW/4m=cS6QSZSc*nd\n" | passwd service01
+echo 'service01:W/4m=cS6QSZSc*nd' | chpasswd
