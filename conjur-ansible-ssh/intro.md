@@ -3,8 +3,7 @@ Ansible is an agentless configuration management tool for provisioning, configur
 With this fully interactive hosted tutorial you will learn how to secure Ansible automation by keeping unsecured secrets out of Playbooks with Conjur open source secrets management.
 
 # How it works?
-
-![How it works](https://raw.githubusercontent.com/quincycheng/katacoda-scenarios/master/conjur-ansible-ssh/media/ansible.svg)
+<img src="https://raw.githubusercontent.com/quincycheng/katacoda-scenarios/master/conjur-ansible-ssh/media/ansible.svg" width="50%" height="50%"/>
 
 1. Install Cojur Role and Lookup Plug-in
 2. Load an Conjur policy that grants the Ansible control machine privileges on secrets
@@ -12,6 +11,7 @@ With this fully interactive hosted tutorial you will learn how to secure Ansible
 4. Authenticate the control machine to Conjur
 5. Issue the secrets
 6. Playbook runs containing secret
+    
 
 All you need is a web browser and a few minutes to get started, no need to install anything!
 Let's get started!
