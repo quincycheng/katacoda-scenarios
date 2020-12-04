@@ -21,17 +21,8 @@ docker-compose exec client conjur hostfactory token create ansible|tee hftoken
 export HFTOKEN="$(grep token hftoken | cut -d: -f2 | tr -d ' \r\n' | tr -d ','  | tr -d '\"' )"
 ```{{execute}}
 
-5. Prepare an inventory file
-```
-cat inventory
-```{{execute}}
+5. Prepare an inventory file: `cat inventory`{{execute}}
 
-6. Prepare a playbok to grant the ansible host with Conjur Identity 
-```
-cat grant_conjur_id.yml
-```{{execute}}
+6. Prepare a playbok to grant the ansible host with Conjur Identity: `cat grant_conjur_id.yml`{{execute}}
 
-7. Grant it!
-```
-ansible-playbook -i inventory grant_conjur_id.yml
-```{{execute}}
+7. Grant it!  `ansible-playbook -i inventory grant_conjur_id.yml`{{execute}}
