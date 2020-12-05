@@ -1,28 +1,20 @@
 
-Ansible can manage servers via SSH.
-First we need to create SSH accounts on our managed servers
+In this tutorial, 2 servers will be used and prepared for you.
 
 ## Local Server
-
-Let's create an account on host 1
-```
-useradd -m -d /tmp service01
-passwd service01
-```{{execute HOST1}}
-
-Enter new UNIX password: `W/4m=cS6QSZSc*nd`{{execute HOST1}}
-
-Retype new UNIX password: `W/4m=cS6QSZSc*nd`{{execute HOST1}}
+- IP: `[[HOST1_IP]]`
+- Software installed:
+  - CyberArk Conjur OSS 
+  - Ansible
+  - sshd
+- Service account:
+   - username: `service01`
+   - password: `W/4m=cS6QSZSc*nd`
 
 ## Remote Server
-
-Let's create a service account on host 2
-
-```
-useradd -m -d /tmp service02
-passwd service02
-```{{execute HOST2}}
-
-Enter new UNIX password: `5;LF+J4Rfqds:DZ8`{{execute HOST2}}
-
-Retype new UNIX password: `5;LF+J4Rfqds:DZ8`{{execute HOST2}}
+- IP: `[[HOST2_IP]]`
+- Software installed:
+  - sshd
+- Service account:
+   - username: `service02`
+   - password: `5;LF+J4Rfqds:DZ8`
