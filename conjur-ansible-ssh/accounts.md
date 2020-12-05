@@ -1,7 +1,7 @@
 
 In this tutorial, 2 servers will be used and prepared for you.
 
-## Local Server
+## Local Server (Host 1)
 - IP: `[[HOST1_IP]]`
 - Software installed:
   - CyberArk Conjur OSS 
@@ -11,7 +11,7 @@ In this tutorial, 2 servers will be used and prepared for you.
    - username: `service01`
    - password: `W/4m=cS6QSZSc*nd`
 
-## Remote Server
+## Remote Server (Host 2)
 - IP: `[[HOST2_IP]]`
 - Software installed:
   - sshd
