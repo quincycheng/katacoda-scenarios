@@ -17,11 +17,11 @@ Let's review the sample playbook, which connects to
 To execute the playbook:
 `ansible-playbook -i inventory playbook.yml`{{execute}}
 
-Sample result:
+The result should contains the following message:
 ```
 TASK [debug] *******************************************************************
 ok: [host1] => {
-    "msg": "I am  service01 at master"
+    "msg": "I am  service01 at controlplane"
 }
 ok: [host2] => {
     "msg": "I am  service02 at node01"
