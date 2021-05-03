@@ -1,6 +1,6 @@
 
 
-Visiti Jenkins > Demo > Credentials > Folder > Global credentials (unrestricted) > [Add Credentials](https://[[HOST_SUBDOMAIN]]-8081-[[KATACODA_HOST]].environments.katacoda.com/job/Demo/credentials/store/folder/domain/_/newCredentials) to create a new credentaisl
+Visiti Jenkins > Demo > Credentials > Folder > Global credentials (unrestricted) > [Add Credentials](https://[[HOST_SUBDOMAIN]]-8081-[[KATACODA_HOST]].environments.katacoda.com/job/Demo/credentials/store/folder/domain/_/newCredentials) to create a new credentail
 
 -  Kind: Conjur Secret Credentials
 -  ID: `WEB_PASSWORD`{{copy}}
