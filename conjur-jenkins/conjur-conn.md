@@ -17,7 +17,7 @@ Jenkins user name is `admin`{{copy}} and password is `344827fbdbfb40d5aac067c7a0
   Copy and paste the API key that was returned by DAP when you loaded the policy declaring this host.
   Forgot it?  No worries, execute `cat frontend.out`{{execute}} to review it
 
-3. Click Save.
+3. Click OK.
 
 You can also decide whether to set up global or folder-level access to DAP, or a combination of both.
 
