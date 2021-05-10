@@ -17,7 +17,7 @@ export CONJUR_URL=$(kubectl describe svc conjur-cluster-conjur-oss -n conjur-ser
 export SERVICE_IP=$(echo $CONJUR_URL | awk  -F ':' '{print $1}')
                                           
 alias conjur='docker run --rm -it --add-host conjur.demo.com:$SERVICE_IP -v $(pwd):/root cyberark/conjur-cli:5 '
-```{{execute HOST1}}}
+```{{execute HOST1}}
 
 In your own environment, you may wish to add it in shell script file, e.g. `~/.bashrc` or `~/.zshrc`
 
