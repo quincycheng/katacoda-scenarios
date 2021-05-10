@@ -17,11 +17,10 @@ To deploy, execute:
 
 Now the application has been installed.
 
+Let's wait for it to get started.
 ```
 kubectl get pods -n testapp -w
 ```{{execute HOST1}}
-
-Let's wait for it to get started.
 ```
 master $ kubectl get pods -n testapp -w
 NAME                                READY   STATUS    RESTARTS   AGE
