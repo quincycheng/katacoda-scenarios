@@ -1,7 +1,0 @@
-- !layer
-
-- !host frontend-01
-
-- !grant
-  role: !layer
-  member: !host frontend-01
