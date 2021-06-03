@@ -23,6 +23,6 @@
     "uilayout": "terminal-terminal"
   },
   "backend": {
-    "imageid": "kubernetes-cluster"
+    "imageid": "conjur-impact2021-cluster-running"
   }
 }
