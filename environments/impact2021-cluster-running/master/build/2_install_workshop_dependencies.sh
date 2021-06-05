@@ -24,7 +24,9 @@ cd /root
 
 # Install Conjur OSS quick-start
 #curl -fsSL cybr.rocks/conjur-install | bash -s
-curl -fsSL cybr.rocks/conjur-install -o conjur-install.sh && ./conjur-install.sh --no-update
+curl -fsSL cybr.rocks/conjur-install -o conjur-install.sh 
+chmod +x ./conjur-install.sh
+./conjur-install.sh --no-update
 
 echo "done" >> /root/katacoda-finished
 
