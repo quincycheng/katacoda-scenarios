@@ -4,19 +4,24 @@
 apt-get update
 apt-get install -y mysql-client-core-5.7 jq
 
-docker pull mattrayner/lamp:latest-1804
 
 # Deploy LAMP & create MySQL database and user
-docker run --name lamp -d -p "80:80" -p "3306:3306" -v ${PWD}/app:/app -v ${PWD}/mysql:/var/lib/mysql mattrayner/lamp:latest-1804
+mkdir /opt/mysql
+mkdir /opt/app
+cd /opt
+docker pull mattrayner/lamp:latest-1804
+docker run --name lamp -d -p "80:80" -p "3306:3306" -v /opt/app:/app -v /opt/mysql:/var/lib/mysql mattrayner/lamp:latest-1804
+# sleep for 1 min to make sure MySQL is up & running
 sleep 1m 
+# Add "use conjur_demo"
 docker exec lamp mysql -h localhost --port=3306 -uroot \
-    -e "CREATE DATABASE conjur_demo; CREATE USER 'devapp1' IDENTIFIED BY 'Cyberark1'; GRANT ALL PRIVILEGES ON conjur_demo.* TO 'devapp1'; FLUSH PRIVILEGES; CREATE TABLE IF NOT EXISTS conjur_demo.demo (message VARCHAR(255) NOT NULL) ENGINE=MyISAM DEFAULT CHARSET=utf8; INSERT INTO demo (message) VALUES ('If you are seeing this message, we have successfully connected PHP to our backend MySQL database!');"
+    -e "CREATE DATABASE conjur_demo;  CREATE USER 'devapp1' IDENTIFIED BY 'Cyberark1'; GRANT ALL PRIVILEGES ON conjur_demo.* TO 'devapp1'; FLUSH PRIVILEGES; USE conjur_demo; CREATE TABLE IF NOT EXISTS conjur_demo.demo (message VARCHAR(255) NOT NULL) ENGINE=MyISAM DEFAULT CHARSET=utf8; INSERT INTO demo (message) VALUES ('If you are seeing this message, we have successfully connected PHP to our backend MySQL database!');"
+
 
 # Get Policy files
-cd /tmp
 git clone https://github.com/infamousjoeg/katacoda-scenarios.git
-mkdir /tmp/policies/
-cp katacoda-scenarios/impact2021-security-workshop_webapp/assets/* /tmp/policies
+mkdir /opt/policies/
+cp katacoda-scenarios/impact2021-security-workshop_webapp/assets/* /opt/policies
 
 
 # Move to /root
@@ -32,7 +37,8 @@ echo "done" >> /root/katacoda-finished
 
 
 # Copy & load root.yml policy file
-docker cp /tmp/policies/root.yml root_client_1:/policies/
+docker exec root_client_1 mkdir /policies/
+docker cp /opt/policies/root.yml root_client_1:/policies/
 # Output API key to /root/demouser.txt
 docker exec root_client_1 conjur policy load root /policies/root.yml > demouser.txt
 
