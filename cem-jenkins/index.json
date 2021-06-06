@@ -1,0 +1,36 @@
+{
+  "title": "Work in progress - CEM Jenkins Shared Library Demo",
+  "description": "Learn how to configure Jenkins Shared Library for Jenkins Integration",
+  "difficulty": "Intermediate",
+  "time": "15-20 minutes",
+  "icon": "fa-jenkins",
+  "details": {
+    "steps": [
+      {
+        "title": "Jenkins",
+        "text": "jenkins.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "credits": ""
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "showdashboard": true,
+    "dashboards": [
+      {
+        "name": "Jenkins",
+        "port": 8080
+      }
+    ],
+    "uilayout": "terminal-iframe",
+    "uimessage1": "\u001b[32mWelcome to CEM Jenkins Shared Library tutorial.\u001b[m\r\n"
+  },
+  "backend": {
+    "imageid": "conjur-cem-jenkins-running"
+  }
+}
