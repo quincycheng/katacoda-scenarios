@@ -5,7 +5,7 @@ apt-get upgrade -y
 #Jenkins
 docker pull jenkins/jenkins:lts-jdk11
 
-# Download and Unpack jenkins_data folder
+# Download, combine & unpack jenkins_data folder
 cd /opt
 git clone https://github.com/quincycheng/katacoda-env-cem-jenkins.git
 cd /opt/katacoda-env-cem-jenkins/
