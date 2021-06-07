@@ -5,9 +5,12 @@ apt-get upgrade -y
 #Jenkins
 docker pull jenkins/jenkins:lts-jdk11
 
-
 cd /opt
 git clone https://github.com/quincycheng/katacoda-env-cem-jenkins.git
+cd /opt/katacoda-env-cem-jenkins/
+
+cat assets/jenkins_data.tar.gz.parta* > jenkins_data.tar.gz
+tar zvxf jenkins_data.tar.gz
 
 
 # Script to start jenkins when session starts
