@@ -20,8 +20,10 @@
     }
   },
   "environment": {
-    "uilayout": "editor-terminal",
-    "showide": true
+    "uieditorpath": "/opt/app",
+    "showide": true,
+    "idePort": 23000,
+    "uilayout": "terminal"
   },
   "backend": {
     "imageid": "impact2021-cluster-running"
