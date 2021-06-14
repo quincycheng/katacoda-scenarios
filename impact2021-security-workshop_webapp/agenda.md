@@ -1,4 +1,3 @@
-# Agenda
 
 In this scenario, we will be working with a Linux, Apache, MySQL and PHP (LAMP) stack.
 

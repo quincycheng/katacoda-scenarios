@@ -1,4 +1,3 @@
-# The Next Steps
 
 Call to action
 
