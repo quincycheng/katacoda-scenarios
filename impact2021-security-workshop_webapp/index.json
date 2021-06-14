@@ -20,9 +20,10 @@
     }
   },
   "environment": {
-    "uilayout": "terminal-terminal"
+    "uilayout": "editor-terminal",
+    "showide": true
   },
   "backend": {
-    "imageid": "conjur-impact2021-cluster-running"
+    "imageid": "impact2021-cluster-running"
   }
 }
