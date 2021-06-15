@@ -9,6 +9,46 @@
       {
         "title": "Jenkins",
         "text": "jenkins.md"
+      },
+      {
+        "title": "Create CEM API",
+        "text": "cem.md"
+      },
+      {
+        "title": "Build Jenkins Pipeline",
+        "text": "build.md"
+      },
+      {
+        "title": "Set CEM API",
+        "text": "setapi.md"
+      },
+      {
+        "title": "Review Logs",
+        "text": "logs.md"
+      },
+      {
+        "title": "Review Logs",
+        "text": "logs.md"
+      },
+      {
+        "title": "API - Get Accounts",
+        "text": "cemGetAccounts.md"
+      },
+            {
+        "title": "API - Get Entities",
+        "text": "cemGetEntities.md"
+      },
+      {
+        "title": "API - Get Entity Details",
+        "text": "cemGetEntityDetails.md"
+      },
+            {
+        "title": "API - Get Recommendations",
+        "text": "cemGetRecommendations.md"
+      },
+            {
+        "title": "API - Get Remediations",
+        "text": "cemGetRemediations.md"
       }
     ],
     "intro": {
@@ -30,7 +70,11 @@
       {
         "name": "Jenkins",
         "port": 8080
-      }
+      },
+       {
+         "name": "Pipeline Script", 
+         "href": "https://github.com/quincycheng/cem-jenkins-lib/blob/main/example/Jenkinsfile"
+      }     
     ],
     "uilayout": "terminal-iframe",
     "uimessage1": "\u001b[32mWelcome to CEM Jenkins Shared Library tutorial.\u001b[m\r\n"
