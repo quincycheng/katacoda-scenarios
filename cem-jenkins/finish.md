@@ -1,2 +1,2 @@
-Awesome! You have learnt how to secure Jenkins pipelines using Conjur & credentials plugins.
+Awesome! You have learnt how to use Jenkins Shared Library to integrate with CyberArk Cloud Entitlements Manager
 
