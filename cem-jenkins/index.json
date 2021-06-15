@@ -7,7 +7,7 @@
   "details": {
     "steps": [
       {
-        "title": "Create CEM API",
+        "title": "Create CEM API Key",
         "text": "cem.md"
       },
       {
@@ -15,7 +15,7 @@
         "text": "build.md"
       },
       {
-        "title": "Set CEM API",
+        "title": "Set CEM API Key",
         "text": "setapi.md"
       },
       {
