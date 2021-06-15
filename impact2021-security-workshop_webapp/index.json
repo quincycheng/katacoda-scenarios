@@ -26,6 +26,6 @@
     "uilayout": "terminal"
   },
   "backend": {
-    "imageid": "impact2021-cluster-running"
+    "imageid": "conjur-impact2021-cluster-running"
   }
 }
