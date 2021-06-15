@@ -7,10 +7,6 @@
   "details": {
     "steps": [
       {
-        "title": "Jenkins",
-        "text": "jenkins.md"
-      },
-      {
         "title": "Create CEM API",
         "text": "cem.md"
       },
