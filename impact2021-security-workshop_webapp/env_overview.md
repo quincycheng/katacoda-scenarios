@@ -45,3 +45,5 @@ This container is the PostgreSQL database backend that stores the secrets used b
 
 # mattrayner/lamp
 This container is a full LAMP stack. LAMP stands for Linux, Apache, MySQL and PHP. This stack has been pre-configured and is waiting on us to provide a web application in the local `/opt/app` directory.
+
+To view the current website, click the `Web App` tab next to `Terminal`.
