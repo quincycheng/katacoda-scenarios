@@ -4,11 +4,14 @@
   "icon": "fa-shield-alt",
   "details": {
     "steps": [
-        {
+      {
         "title": "Agenda",
         "text": "agenda.md"
+      },
+      {
+        "title": "Environment Overview",
+        "text": "env_overview.md"
       }
-
     ],
     "intro": {
       "text": "intro.md",
