@@ -23,6 +23,10 @@
     }
   },
   "environment": {
+    "showdashboard": true,
+    "dashboards": [
+        {"name": "Web App", "port": 80}
+    ],
     "uieditorpath": "/opt/app",
     "idePort": 23000,
     "uilayout": "vscode-terminal-split"
