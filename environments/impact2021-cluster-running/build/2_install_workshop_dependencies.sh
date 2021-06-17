@@ -57,7 +57,7 @@ cat << EOF > /opt/configure-environment.sh
 #!/bin/bash
 docker start root_database_1
 docker start lamp
-docker start root_conjur_1
 docker start root_client_1
+docker start root_conjur_1
 EOF
 chmod +x /opt/configure-environment.sh
