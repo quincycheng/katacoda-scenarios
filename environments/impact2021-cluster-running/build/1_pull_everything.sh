@@ -13,17 +13,3 @@ docker-compose pull
 docker-compose run --no-deps --rm conjur data-key generate > data_key
 
 docker pull postgres:9.6
-
-
-#Jenkins
-docker pull jenkins/jenkins:lts
-
-#Kubernetes
-cd /tmp
-git clone https://github.com/QuincyChengAtWork/conjur-oss-k8s-authn-katacoda.git
-wget https://github.com/QuincyChengAtWork/conjur-oss-k8s-authn-katacoda/archive/v1.0.zip
-unzip v1.0.zip
-
-# Add service01 a/c
-useradd -m -d /tmp service01
-echo 'service01:W/4m=cS6QSZSc*nd' | chpasswd
