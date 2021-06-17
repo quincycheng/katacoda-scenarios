@@ -23,7 +23,7 @@
     "uieditorpath": "/opt/app",
     "showide": true,
     "idePort": 23000,
-    "uilayout": "terminal"
+    "uilayout": "vscode-terminal-split"
   },
   "backend": {
     "imageid": "conjur-impact2021-cluster-running"
