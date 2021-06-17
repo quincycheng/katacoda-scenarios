@@ -24,7 +24,6 @@
   },
   "environment": {
     "uieditorpath": "/opt/app",
-    "showide": true,
     "idePort": 23000,
     "uilayout": "vscode-terminal-split"
   },
