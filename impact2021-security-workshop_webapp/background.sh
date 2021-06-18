@@ -1,2 +1,6 @@
 #!/bin/bash
-/opt/configure-environment.sh 
+docker start root_database_1
+docker start root_client_1
+docker start lamp
+sleep 3s
+docker start root_conjur_1
