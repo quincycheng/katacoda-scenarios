@@ -7,11 +7,39 @@ docker ps
 ```{{execute}}
 
 The containers returned should be:
-* mattrayner/lamp
 * cyberark/conjur
 * postgres
 
 _NOTE: cyberark/conjur and postgres are combined into the same appliance container for Conjur Enterprise._
+
+There is one CLI locally, let's focus on that and then we'll review the containers.
+
+# cybr-cli
+The cybr-cli is locally installed to assist with interacting with the CyberArk Conjur container's service.
+
+First, let's get our `demouser` credentials: `cat demouser.txt`{{execute}}
+
+Copy the API Key that is returned in the JSON response.
+
+Next, let's login using those credentials: `cybr conjur logon -a quick-start -b https://[[HOST_SUBDOMAIN]]-8080-[[KATACODA_HOST]].environments.katacoda.com -l demouser`{{execute}}
+
+To test this, execute the following command:
+```
+cybr conjur list
+```{{execute}}
+
+If everything is authenticated properly, you should have received the following response:
+
+```
+[
+  "quick-start:policy:root",
+  "quick-start:user:demouser",
+  "quick-start:policy:devapp",
+  "quick-start:group:devapp/secret-users",
+  "quick-start:variable:devapp/db_uname",
+  "quick-start:variable:devapp/db_pass"
+]
+```
 
 Let's break down each container's purpose for this scenario.
 
