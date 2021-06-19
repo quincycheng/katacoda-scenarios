@@ -7,21 +7,24 @@ docker ps
 ```{{execute}}
 
 The containers returned should be:
-* conjurinc/cli5
 * cyberark/conjur
 * postgres
 * mattrayner/lamp
 
 _NOTE: cyberark/conjur and postgres are combined into the same appliance container for Conjur Enterprise._
 
-Let's break down each container's purpose for this scenario.
+There is one CLI locally, let's focus on that and then we'll review the containers.
 
-# conjurinc/cli5
-This container is the CyberArk Conjur CLI. It has been pre-configured and should be authenticated to the cyberark/conjur container.
+# cybr-cli
+The cybr-cli is locally installed to assist with interacting with the CyberArk Conjur container's service.
+
+First, let's get our `demouser` credentials: `cat demouser.txt`{{execute}}
+
+Next, let's login using those credentials: `cybr conjur logon -a quick-start -b http://conjur -l demouser`{{execute}}
 
 To test this, execute the following command:
 ```
-docker exec root_client_1 conjur list
+cybr conjur list
 ```{{execute}}
 
 If everything is authenticated properly, you should have received the following response:
@@ -36,6 +39,8 @@ If everything is authenticated properly, you should have received the following 
   "quick-start:variable:devapp/db_pass"
 ]
 ```
+
+Let's break down each container's purpose for this scenario.
 
 # cyberark/conjur
 This container is the CyberArk Conjur service. It has been pre-configured for this scenario. As you have already experienced from the last executed command, it is online and available for serving requests.
