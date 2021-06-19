@@ -22,6 +22,11 @@
       "courseData": "background.sh",
       "code": "foreground.sh"
     },
+    "assets": {
+      "host01": [
+          {"file": "wait.sh", "target": "/usr/local/bin/", "chmod": "+x"}
+      ]
+    },
     "finish": {
       "text": "finish.md"
     }
