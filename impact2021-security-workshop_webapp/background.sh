@@ -26,6 +26,7 @@ docker run --name lamp -d -p "80:80" -p "3306:3306" \
     mattrayner/lamp:latest-1804
 
 wget https://github.com/infamousjoeg/cybr-cli/releases/download/v0.1.3-beta/linux_cybr -o /usr/local/bin/cybr
+chmod +x /usr/local/bin/cybr
 
 # Add "use conjur_demo"
 docker exec lamp mysql -h localhost --port=3306 -uroot \

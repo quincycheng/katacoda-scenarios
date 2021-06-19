@@ -20,6 +20,8 @@ The cybr-cli is locally installed to assist with interacting with the CyberArk C
 
 First, let's get our `demouser` credentials: `cat demouser.txt`{{execute}}
 
+Copy the API Key that is returned in the JSON response.
+
 Next, let's login using those credentials: `cybr conjur logon -a quick-start -b http://conjur -l demouser`{{execute}}
 
 To test this, execute the following command:
