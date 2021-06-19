@@ -11,6 +11,10 @@
       {
         "title": "Environment Overview",
         "text": "env_overview.md"
+      },
+      {
+        "title": "Hard-Coded Credentials Web App",
+        "text": "insecure_app.md"
       }
     ],
     "intro": {
