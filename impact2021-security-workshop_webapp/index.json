@@ -41,6 +41,6 @@
     "uilayout": "vscode-terminal-split"
   },
   "backend": {
-    "imageid": "conjur-impact2021-cluster-running"
+    "imageid": "conjur-impact2021-security-env"
   }
 }
