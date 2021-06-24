@@ -70,13 +70,3 @@ docker exec lamp mysql -h localhost --port=3306 -uroot \
 docker run --name cybr-cli -d nfmsjoeg/cybr-cli:0.1.3-beta
 docker cp cybr-cli:/app/cybr /usr/local/bin
 docker rm -f cybr-cli
-
-# script will be run when the session starts 
-cat << EOF > /opt/configure-environment.sh
-#!/bin/bash
-docker start root_database_1
-docker start lamp
-docker start root_conjur_1
-docker start root_client_1
-EOF
-chmod +x /opt/configure-environment.sh
