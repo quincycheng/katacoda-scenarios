@@ -6,9 +6,6 @@ docker start lamp
 sleep 3s
 docker start root_conjur_1
 
-CONJUR_IP_ADDRESS=$(docker inspect root_conjur_1 | jq -r .[0].NetworkSettings.Networks.root_default.IPAddress)
-echo "$CONJUR_IP_ADDRESS conjur" >> /etc/hosts
-
 echo "done" >> /root/katacoda-finished
 
 ##### THE FOLLOWING SHOULD BE MOVED TO THE ENVIRONMENT BUILD #####
@@ -25,9 +22,7 @@ docker run --name lamp -d -p "80:80" -p "3306:3306" \
     -v /opt/app:/app -v /opt/mysql:/var/lib/mysql \
     mattrayner/lamp:latest-1804
 
-curl https://github.com/infamousjoeg/cybr-cli/releases/download/v0.1.3-beta/linux_cybr
-chmod +x linux_cybr
-mv linux_cybr /usr/local/bin/cybr
+curl -fsSL https://github.com/infamousjoeg/cybr-cli/releases/download/v0.1.3-beta/linux_cybr
 
 # Add "use conjur_demo"
 docker exec lamp mysql -h localhost --port=3306 -uroot \
