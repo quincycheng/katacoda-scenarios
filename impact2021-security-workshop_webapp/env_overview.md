@@ -7,6 +7,7 @@ docker ps
 ```{{execute}}
 
 The containers returned should be:
+* mattrayner/lamp
 * cyberark/conjur
 * postgres
 
