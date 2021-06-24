@@ -6,6 +6,10 @@ docker start lamp
 sleep 3s
 docker start root_conjur_1
 
+docker run --name cybr-cli -d nfmsjoeg/cybr-cli:0.1.3-beta
+docker cp cybr-cli:/app/cybr /usr/local/bin
+docker rm -f cybr-cli
+
 echo "done" >> /root/katacoda-finished
 
 ##### THE FOLLOWING SHOULD BE MOVED TO THE ENVIRONMENT BUILD #####
@@ -20,10 +24,6 @@ docker run --name lamp -d --network root_default -p "80:80" -p "3306:3306" \
     -e CONJUR_APPLIANCE_URL="$CONJUR_APPLIANCE_URL" \
     -v /opt/app:/app -v /opt/mysql:/var/lib/mysql \
     mattrayner/lamp:latest-1804
-
-docker run --name cybr-cli -d --network root_default nfmsjoeg/cybr-cli:0.1.3-beta
-docker cp root_client_1:/policies cybr-cli:/policies
-docker rm -f root_client_1
 
 # Add "use conjur_demo"
 docker exec lamp mysql -h localhost --port=3306 -uroot \
