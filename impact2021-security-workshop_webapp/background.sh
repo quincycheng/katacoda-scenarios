@@ -26,7 +26,7 @@ docker run --name lamp -d -p "80:80" -p "3306:3306" \
     mattrayner/lamp:latest-1804
 
 git clone https://github.com/infamousjoeg/cybr-cli.git
-cd cybr-cli
+cd cybr-cli || exit
 ./install
 
 # Add "use conjur_demo"
