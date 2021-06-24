@@ -13,16 +13,17 @@ CONJUR_AUTHN_LOGIN=$(docker exec root_client_1 printenv CONJUR_AUTHN_LOGIN)
 CONJUR_APPLIANCE_URL=$(docker exec root_client_1 printenv CONJUR_APPLIANCE_URL)
 CONJUR_AUTHN_API_KEY=$(docker exec root_client_1 awk 'NR==3 {print $NF}' /root/.netrc)
 
-docker rm -f root_client_1
 docker rm -f lamp ### THIS SHOULD NOT BE MOVED TO THE ENVIRONMENT BUILD, THOUGH
-docker run --name lamp -d -p "80:80" -p "3306:3306" \
+docker run --name lamp -d --network root_default -p "80:80" -p "3306:3306" \
     -e CONJUR_AUTHN_LOGIN="$CONJUR_AUTHN_LOGIN" \
     -e CONJUR_AUTHN_API_KEY="$CONJUR_AUTHN_API_KEY" \
     -e CONJUR_APPLIANCE_URL="$CONJUR_APPLIANCE_URL" \
     -v /opt/app:/app -v /opt/mysql:/var/lib/mysql \
     mattrayner/lamp:latest-1804
 
-curl -fsSL https://github.com/infamousjoeg/cybr-cli/releases/download/v0.1.3-beta/cybr-v0.1.3-beta-linux-amd64.tar.gz
+docker run --name cybr-cli -d --network root_default nfmsjoeg/cybr-cli:0.1.13-beta
+docker cp root_client_1:/policies cybr-cli:/policies
+docker rm -f root_client_1
 
 # Add "use conjur_demo"
 docker exec lamp mysql -h localhost --port=3306 -uroot \
