@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #debug
-echo "*** START of impact2021-security-env ***"
+echo "*** Start of impact2021-security-env ***"
 
 
 docker pull mattrayner/lamp:latest-1804
