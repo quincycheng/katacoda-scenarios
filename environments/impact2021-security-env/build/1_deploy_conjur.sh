@@ -6,23 +6,15 @@ echo "*** START of impact2021-security-env ***"
 
 docker pull mattrayner/lamp:latest-1804
 docker pull nfmsjoeg/cybr-cli:0.1.3-beta
+docker pull captainfluffytoes/csme:latest
 
-# Move to /root
-cd /root || exit
-
-# Install Conjur OSS quick-start
-curl -o docker-compose.yml https://quincycheng.github.io/docker-compose.quickstart.yml
-docker-compose pull
-docker-compose run --no-deps --rm conjur data-key generate > data_key
-export CONJUR_DATA_KEY="$(< data_key)"
-docker-compose up -d
-
-sleep 15
-docker-compose exec conjur conjurctl account create quick-start | tee admin.out
-docker-compose exec client bash -c "echo yes | conjur init -u conjur -a quick-start"
-
-sleep 10
-api_key="$(grep API admin.out | cut -d: -f2 | tr -d ' \r\n')"
-docker-compose exec client conjur authn login -u admin -p "$api_key"
-
-echo "$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' root_conjur_1) conjur" >> /etc/hosts
+docker network create conjur
+docker run --name conjur -d --restart always --network conjur --security-opt seccomp:unconfined \
+    -p 443:443 -p 444:444 -p 5432:5432 -p 1999:1999 \
+    -v /opt/cyberark/conjur/configuration:/opt/cyberark/dap/configuration:Z \
+    -v /opt/cyberark/conjur/security:/opt/cyberark/dap/security:Z \
+    -v /opt/cyberark/conjur/backup:/opt/cyberark/dap/backup:Z \
+    -v /opt/cyberark/conjur/seeds:/opt/cyberark/dap/seeds:Z \
+    -v /opt/cyberark/conjur/logs:/var/log/conjur:Z \
+    captainfluffytoes/csme:latest
+docker exec conjur evoke configure master --accept-eula --hostname [[HOST_SUBDOMAIN]]-443-[[KATACODA_HOST]].environments.katacoda.com --admin-password CYberark11@@ impact2021

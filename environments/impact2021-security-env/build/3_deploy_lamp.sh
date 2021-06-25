@@ -1,15 +1,10 @@
 #!/bin/bash
 
-# Grab Conjur authn info
-CONJUR_AUTHN_LOGIN=$(docker exec root_client_1 printenv CONJUR_AUTHN_LOGIN)
-CONJUR_APPLIANCE_URL=$(docker exec root_client_1 printenv CONJUR_APPLIANCE_URL)
-CONJUR_AUTHN_API_KEY=$(docker exec root_client_1 awk 'NR==3 {print $NF}' /root/.netrc)
-
 # Start LAMP container with host identity
-docker run --name lamp -d -p "80:80" -p "3306:3306" \
-    -e CONJUR_AUTHN_LOGIN="$CONJUR_AUTHN_LOGIN" \
-    -e CONJUR_AUTHN_API_KEY="$CONJUR_AUTHN_API_KEY" \
-    -e CONJUR_APPLIANCE_URL="$CONJUR_APPLIANCE_URL" \
+docker run --name lamp -d --restart always --network conjur -p "80:80" -p "3306:3306" \
+    -e CONJUR_AUTHN_LOGIN=admin \
+    -e CONJUR_AUTHN_API_KEY=CYberark11@@ \
+    -e CONJUR_APPLIANCE_URL=https://conjur \
     -v /opt/app:/app -v /opt/mysql:/var/lib/mysql \
     mattrayner/lamp:latest-1804
 
