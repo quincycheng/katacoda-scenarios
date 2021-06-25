@@ -7,6 +7,7 @@ echo "*** Start of impact2021-security-env ***"
 docker pull mattrayner/lamp:latest-1804
 docker pull nfmsjoeg/cybr-cli:0.1.3-beta
 docker pull captainfluffytoes/csme:latest
+docker pull cyberark/conjur-cli:5-latest
 
 docker network create conjur
 docker run --name conjur -d --restart always --network conjur --security-opt seccomp:unconfined \
