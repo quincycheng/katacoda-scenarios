@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#debug
+echo "*** START of impact2021-security-env ***"
+
+
 docker pull mattrayner/lamp:latest-1804
 docker pull nfmsjoeg/cybr-cli:0.1.3-beta
 
@@ -11,3 +15,4 @@ cd /root || exit
 curl -fsSL cybr.rocks/conjur-install -o conjur-install.sh 
 chmod +x ./conjur-install.sh
 ./conjur-install.sh --no-update
+
