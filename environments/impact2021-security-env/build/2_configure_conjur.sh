@@ -5,8 +5,8 @@ docker run --name cli -d --restart always --network conjur \
     -v /root/policy:/policy \
     --entrypoint sleep \
     cyberark/conjur-cli:5-latest infinity
-yes | docker exec -i cli conjur init --account impact2021 --url https://conjur
-docker exec conjur authn login -u admin -p CYberark11@@
+docker exec -i cli conjur init --account impact2021 --url https://conjur <<< yes
+docker exec cli conjur authn login -u admin -p CYberark11@@
 
 # Get Policy files
 git clone https://github.com/infamousjoeg/katacoda-scenarios.git
