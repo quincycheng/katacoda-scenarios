@@ -3,7 +3,7 @@
 # Deploy & Configure Conjur CLI
 docker run --name cli -d --restart always --network conjur \
     -v /root/policy:/policy \
-    --entrypoint sleep
+    --entrypoint sleep \
     cyberark/conjur-cli:5-latest infinity
 docker exec -i cli conjur init --account impact2021 --url https://conjur <<< yes
 docker exec conjur authn login -u admin -p CYberark11@@
