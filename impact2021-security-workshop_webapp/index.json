@@ -37,7 +37,7 @@
         {"name": "Web App", "port": 80}
     ],
     "uieditorpath": "/opt/app",
-    "idePort": 23000,
+    "idePort": 21000,
     "uilayout": "vscode-terminal-split"
   },
   "backend": {
