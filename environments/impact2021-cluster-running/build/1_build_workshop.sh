@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Start of impact2021-cluster-running env"
+
+
 #Ansible
 apt-get update
 apt-add-repository --yes --update ppa:ansible/ansible
@@ -70,3 +73,5 @@ docker exec lamp mysql -h localhost --port=3306 -uroot \
 docker run --name cybr-cli -d nfmsjoeg/cybr-cli:0.1.3-beta
 docker cp cybr-cli:/app/cybr /usr/local/bin
 docker rm -f cybr-cli
+
+echo "End of impact2021-cluster-running env"
