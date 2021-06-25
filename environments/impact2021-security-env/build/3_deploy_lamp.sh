@@ -5,9 +5,6 @@ CONJUR_AUTHN_LOGIN=$(docker exec root_client_1 printenv CONJUR_AUTHN_LOGIN)
 CONJUR_APPLIANCE_URL=$(docker exec root_client_1 printenv CONJUR_APPLIANCE_URL)
 CONJUR_AUTHN_API_KEY=$(docker exec root_client_1 awk 'NR==3 {print $NF}' /root/.netrc)
 
-# Remove old CLI container
-docker rm -f root_client_1
-
 # Start LAMP container with host identity
 docker run --name lamp -d -p "80:80" -p "3306:3306" \
     -e CONJUR_AUTHN_LOGIN="$CONJUR_AUTHN_LOGIN" \
