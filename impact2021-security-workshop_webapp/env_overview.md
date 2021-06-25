@@ -7,7 +7,7 @@ docker ps
 ```{{execute}}
 
 The containers returned should be:
-* cyberark/cli5
+* conjurinc/cli5
 * mattrayner/lamp
 * cyberark/conjur
 * postgres
@@ -16,7 +16,7 @@ _NOTE: cyberark/conjur and postgres are combined into the same appliance contain
 
 Let's break down each container's purpose for this scenario.
 
-# cyberark/cli5
+# conjurinc/cli5
 The CyberArk CLI for Conjur is installed within the container named `root_client_1`.  It has been pre-configured to connect to the Conjur service available in the container named `root_conjur_1`.  We will be using this to interact with the Conjur service in this scenario.
 
 To check who you are logged in as, execute the following command: `docker exec root_client_1 conjur authn whoami`{{execute}}
