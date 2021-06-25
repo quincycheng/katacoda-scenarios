@@ -9,6 +9,6 @@ docker start root_conjur_1
 
 echo "done" >> /root/katacoda-finished
 
-docker rm -f cybr-cli
+#docker rm -f cybr-cli
 
 echo "done" >> /root/katacoda-background-finished
