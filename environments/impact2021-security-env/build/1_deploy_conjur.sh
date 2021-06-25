@@ -17,4 +17,4 @@ docker run --name conjur -d --restart always --network conjur --security-opt sec
     -v /opt/cyberark/conjur/seeds:/opt/cyberark/dap/seeds:Z \
     -v /opt/cyberark/conjur/logs:/var/log/conjur:Z \
     captainfluffytoes/csme:latest
-docker exec conjur evoke configure master --accept-eula --hostname [[HOST_SUBDOMAIN]]-443-[[KATACODA_HOST]].environments.katacoda.com --admin-password CYberark11@@ impact2021
+docker exec conjur evoke configure master --accept-eula --hostname host01 --admin-password CYberark11@@ impact2021

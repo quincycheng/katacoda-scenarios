@@ -34,7 +34,8 @@
   "environment": {
     "showdashboard": true,
     "dashboards": [
-        {"name": "Web App", "port": 80}
+        {"name": "Web App", "port": 80},
+        {"name": "Conjur UI", "port": 443}
     ],
     "uieditorpath": "/opt/app",
     "idePort": 23000,
