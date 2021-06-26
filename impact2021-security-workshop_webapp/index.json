@@ -24,7 +24,10 @@
     },
     "assets": {
       "host01": [
-          {"file": "wait.sh", "target": "/usr/local/bin/", "chmod": "+x"}
+          {"file": "wait.sh", "target": "/usr/local/bin/", "chmod": "+x"},
+          {"file": ".conjurrc", "target": "/root/.config/", "chmod": "777"},
+          {"file": ".netrc", "target": "/root/.config/", "chmod": "777"},
+          {"file": "conjur-impact2021.pem", "target": "/root/conjur-impact2021.pem", "chmod": "777"}
       ]
     },
     "finish": {
