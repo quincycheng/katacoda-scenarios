@@ -1,5 +1,5 @@
 {
-  "title": "Playground",
+  "title": "Playground!",
   "description": "DevSecOps Security Workshop for CyberArk Impact 2021 - Playground",
   "icon": "fa-shield-alt",
   "details": {
@@ -29,9 +29,9 @@
         {"name": "Web App", "port": 80},
         {"name": "Conjur UI", "port": 443}
     ],
-    "uieditorpath": "/opt/app",
+    "uieditorpath": "/opt",
     "idePort": 23000,
-    "uilayout": "vscode-terminal-split"
+    "uilayout": "editor-terminal"
   },
   "backend": {
     "imageid": "conjur-impact2021-cluster-running"
