@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Start of impact2021-cluster-running env"
-
+ 
 # Base OS
 apt-get update
 apt-get upgrade -y
