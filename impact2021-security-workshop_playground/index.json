@@ -14,11 +14,6 @@
       "courseData": "background.sh",
       "code": "foreground.sh"
     },
-    "assets": {
-      "host01": [
-          {"file": "wait.sh", "target": "/usr/local/bin/", "chmod": "+x"}
-      ]
-    },
     "finish": {
       "text": "finish.md"
     }
@@ -29,9 +24,8 @@
         {"name": "Web App", "port": 80},
         {"name": "Conjur UI", "port": 443}
     ],
-    "uieditorpath": "/opt",
     "idePort": 23000,
-    "uilayout": "editor-terminal"
+    "uilayout": "terminal"
   },
   "backend": {
     "imageid": "conjur-impact2021-cluster-running"
