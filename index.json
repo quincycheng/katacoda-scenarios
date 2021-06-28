@@ -1,0 +1,39 @@
+{
+  "title": "Playground",
+  "description": "DevSecOps Security Workshop for CyberArk Impact 2021 - Playground",
+  "icon": "fa-shield-alt",
+  "details": {
+    "steps": [
+      {
+        "title": "Agenda",
+        "text": "agenda.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "courseData": "background.sh",
+      "code": "foreground.sh"
+    },
+    "assets": {
+      "host01": [
+          {"file": "wait.sh", "target": "/usr/local/bin/", "chmod": "+x"},
+      ]
+    },
+    "finish": {
+      "text": "finish.md"
+    }
+  },
+  "environment": {
+    "showdashboard": true,
+    "dashboards": [
+        {"name": "Web App", "port": 80},
+        {"name": "Conjur UI", "port": 443}
+    ],
+    "uieditorpath": "/opt/app",
+    "idePort": 23000,
+    "uilayout": "vscode-terminal-split"
+  },
+  "backend": {
+    "imageid": "conjur-impact2021-cluster-running"
+  }
+}
