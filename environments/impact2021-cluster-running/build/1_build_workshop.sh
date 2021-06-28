@@ -2,7 +2,6 @@
 
 echo "Start of impact2021-cluster-running env"
 
-
 #Ansible
 apt-get update
 apt-add-repository --yes --update ppa:ansible/ansible
