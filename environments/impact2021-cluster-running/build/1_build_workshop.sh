@@ -2,8 +2,11 @@
 
 echo "Start of impact2021-cluster-running env"
 
-#Ansible
+# Base OS
 apt-get update
+apt-get upgrade -y
+
+#Ansible
 apt-add-repository --yes --update ppa:ansible/ansible
 apt-get update
 apt-get install ansible sshpass -y
@@ -12,8 +15,6 @@ export ANSIBLE_HOST_KEY_CHECKING=False
 
 # MySQL Client
 apt-get install -y mysql-client-core-5.7 jq
-
-
 
 
 # Install Conjur OSS quick-start
@@ -54,6 +55,8 @@ docker-compose pull
 docker-compose run --no-deps --rm conjur data-key generate > /root/data_key
 export CONJUR_DATA_KEY="$(< data_key)"
 docker-compose up -d 
+
+sleep 30s
 
 docker-compose exec conjur conjurctl account create demo | tee admin.out
 export conjur_admin="$(grep API admin.out | cut -d: -f2 | tr -d ' \r\n')"
