@@ -57,12 +57,17 @@ docker-compose run --no-deps --rm conjur data-key generate > /opt/conjur/data_ke
 export CONJUR_DATA_KEY="$(< /opt/conjur/data_key)"
 docker-compose up -d 
 
-sleep 30s
+# Wait until conjur container is running
+until [ "$(docker inspect -f "{{.State.Status}}" "${USER}"_conjur_1)" == "running" ]; do
+    sleep 5s;
+done;
 
+
+# Create Conjur Account & Login as Admin 
 docker exec root_conjur_1 conjurctl account create quick-start | tee admin.out
 export conjur_admin="$(grep API admin.out | cut -d: -f2 | tr -d ' \r\n')"
 docker exec root_client_1 bash -c "echo yes | conjur init -u http://conjur -a quick-start"
-docker exec root_client_1 conjur authn login -u admin -p "$conjur_admin"
+docker exec root_client_1 conjur authn login -u admin -p "${conjur_admin}"
 
 
 # cybr-cli
