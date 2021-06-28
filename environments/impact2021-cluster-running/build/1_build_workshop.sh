@@ -6,7 +6,7 @@ echo "Start of impact2021-cluster-running env"
 apt-get update
 apt-get upgrade -y
 
-#Ansible
+# Ansible
 apt-add-repository --yes --update ppa:ansible/ansible
 apt-get update
 apt-get install ansible sshpass -y
