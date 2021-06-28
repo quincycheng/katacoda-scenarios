@@ -28,6 +28,7 @@ services:
     image: postgres:10.16
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
+    restart: always
 
   conjur:
     image: cyberark/conjur
@@ -40,6 +41,7 @@ services:
       - "8080:80"
     volumes:
       - /opt/conjur/postgres-data:/var/lib/postgresql/data
+    restart: always
     
   client:
     image: conjurinc/cli5
@@ -51,7 +53,9 @@ services:
       CONJUR_ACCOUNT:
       CONJUR_AUTHN_API_KEY:
       CONJUR_AUTHN_LOGIN: admin
+    restart: always
 EOF
+
 docker-compose pull
 docker-compose run --no-deps --rm conjur data-key generate > data_key
 export CONJUR_DATA_KEY="$(< data_key)"
@@ -119,6 +123,7 @@ sleep 1m
 # Add "use conjur_demo"
 docker exec lamp mysql -h localhost --port=3306 -uroot \
     -e "CREATE DATABASE conjur_demo;  CREATE USER 'devapp1' IDENTIFIED BY 'Cyberark1'; GRANT ALL PRIVILEGES ON conjur_demo.* TO 'devapp1'; FLUSH PRIVILEGES; USE conjur_demo; CREATE TABLE IF NOT EXISTS conjur_demo.demo (message VARCHAR(255) NOT NULL) ENGINE=MyISAM DEFAULT CHARSET=utf8; INSERT INTO demo (message) VALUES ('If you are seeing this message, we have successfully connected PHP to our backend MySQL database!');"
+
 
 
 echo "End of impact2021-cluster-running env"
