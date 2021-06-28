@@ -52,7 +52,7 @@ services:
       CONJUR_AUTHN_LOGIN: admin
 EOF
 docker-compose pull
-docker-compose run --no-deps --rm conjur data-key generate > /root/data_key
+docker-compose run --no-deps --rm conjur data-key generate > data_key
 export CONJUR_DATA_KEY="$(< data_key)"
 docker-compose up -d 
 
