@@ -59,10 +59,10 @@ docker-compose up -d
 
 sleep 30s
 
-docker-compose exec -T conjur conjurctl account create demo | tee admin.out
+docker exec root_conjur_1 conjurctl account create demo | tee admin.out
 export conjur_admin="$(grep API admin.out | cut -d: -f2 | tr -d ' \r\n')"
-docker-compose exec -T client bash -c "echo yes | conjur init -a quick-start"
-docker-compose exec -T client conjur authn login -u admin -p "$api_key"
+docker exec root_client_1 bash -c "echo yes | conjur init -a quick-start"
+docker exec root_client_1 conjur authn login -u admin -p "$api_key"
 
 
 # cybr-cli
