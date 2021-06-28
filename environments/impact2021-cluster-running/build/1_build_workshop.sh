@@ -39,7 +39,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - /opt/conjur/postgres-data:/var/lib/postgresql/data
+      - /root/postgres-data:/var/lib/postgresql/data
     
   client:
     image: conjurinc/cli5
