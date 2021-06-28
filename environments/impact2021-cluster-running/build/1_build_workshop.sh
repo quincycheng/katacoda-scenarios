@@ -53,14 +53,13 @@ services:
       CONJUR_AUTHN_LOGIN: admin
 EOF
 docker-compose pull
-docker-compose run --no-deps --rm conjur data-key generate > /opt/conjur/data_key
-export CONJUR_DATA_KEY="$(< /opt/conjur/data_key)"
+docker-compose run --no-deps --rm conjur data-key generate > data_key
+export CONJUR_DATA_KEY="$(< data_key)"
 docker-compose up -d 
 
 # Wait until conjur container is running
-until [ "$(docker inspect -f "{{.State.Status}}" "${USER}"_conjur_1)" == "running" ]; do
-    sleep 5s;
-done;
+sleep 1m
+docker-compose logs conjur #for debug
 
 
 # Create Conjur Account & Login as Admin 
