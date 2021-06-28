@@ -5,8 +5,8 @@
   "details": {
     "steps": [
       {
-        "title": "Agenda",
-        "text": "agenda.md"
+        "title": "Overview",
+        "text": "overview.md"
       }
     ],
     "intro": {
@@ -16,7 +16,7 @@
     },
     "assets": {
       "host01": [
-          {"file": "wait.sh", "target": "/usr/local/bin/", "chmod": "+x"},
+          {"file": "wait.sh", "target": "/usr/local/bin/", "chmod": "+x"}
       ]
     },
     "finish": {
