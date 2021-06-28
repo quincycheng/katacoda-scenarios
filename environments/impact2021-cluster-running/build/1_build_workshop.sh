@@ -17,6 +17,10 @@ apt-get install -y mysql-client-core-5.7 jq
 
 
 # Install Conjur OSS quick-start
+mkdir /opt/conjur
+mkdir /opt/conjur/postgres-data
+cd /opt/conjur
+
 cat <<EOF > docker-compose.yml 
 version: '3'
 services:
@@ -46,11 +50,16 @@ services:
       CONJUR_AUTHN_API_KEY:
       CONJUR_AUTHN_LOGIN: admin
 EOF
-mkdir /root/postgres-data
 docker-compose pull
 docker-compose run --no-deps --rm conjur data-key generate > /root/data_key
 export CONJUR_DATA_KEY="$(< data_key)"
 docker-compose up -d 
+
+docker-compose exec conjur conjurctl account create demo | tee admin.out
+export conjur_admin="$(grep API admin.out | cut -d: -f2 | tr -d ' \r\n')"
+docker-compose exec client bash -c "echo yes | conjur init -a quick-start"
+docker-compose exec client conjur authn login -u admin -p "$api_key"
+
 
 # cybr-cli
 docker run --name cybr-cli -d nfmsjoeg/cybr-cli:0.1.3-beta
