@@ -19,12 +19,6 @@
     }
   },
   "environment": {
-    "showdashboard": true,
-    "dashboards": [
-        {"name": "Web App", "port": 80},
-        {"name": "Conjur UI", "port": 8080}
-    ],
-    "idePort": 23000,
     "uilayout": "vscode-terminal-split"
   },
   "backend": {
