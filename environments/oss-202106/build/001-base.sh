@@ -65,7 +65,7 @@ sleep 1m
 docker-compose logs conjur #for debug
 
 # Remove data key from docker-compose.yml
-sed -i 's/CONJUR_DATA_KEY: "Ym2Jf4A3EwgzlYLiz5txzIplrPXLO3dactjnMjyW7sI="/CONJUR_DATA_KEY:/' docker-compose.yml
+# sed -i 's/CONJUR_DATA_KEY: "Ym2Jf4A3EwgzlYLiz5txzIplrPXLO3dactjnMjyW7sI="/CONJUR_DATA_KEY:/' docker-compose.yml
 
 
 # Create Conjur Account & Login as Admin 
