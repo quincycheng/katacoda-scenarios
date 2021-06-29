@@ -35,7 +35,7 @@ services:
     command: server
     environment:
       DATABASE_URL: postgres://postgres@database/postgres
-      CONJUR_DATA_KEY:
+      CONJUR_DATA_KEY: "${CONJUR_DATA_KEY}"
     depends_on: [ database ]
     ports:
       - "8080:80"
@@ -58,8 +58,11 @@ EOF
 
 docker-compose pull
 docker-compose run --no-deps --rm conjur data-key generate > data_key
+
 sleep 2s
+cat data_key
 export CONJUR_DATA_KEY="$(< data_key)"
+
 sleep 2s
 docker-compose up -d 
 
