@@ -24,10 +24,7 @@
     },
     "assets": {
       "host01": [
-          {"file": "wait.sh", "target": "/usr/local/bin/", "chmod": "+x"},
-          {"file": ".conjurrc", "target": "/root/.config/", "chmod": "777"},
-          {"file": ".netrc", "target": "/root/.config/", "chmod": "777"},
-          {"file": "conjur-impact2021.pem", "target": "/root/conjur-impact2021.pem", "chmod": "777"}
+          {"file": "wait.sh", "target": "/usr/local/bin/", "chmod": "+x"}
       ]
     },
     "finish": {
@@ -37,14 +34,13 @@
   "environment": {
     "showdashboard": true,
     "dashboards": [
-        {"name": "Web App", "port": 80},
-        {"name": "Conjur UI", "port": 443}
+        {"name": "Web App", "port": 80}
     ],
     "uieditorpath": "/opt/app",
     "idePort": 23000,
     "uilayout": "vscode-terminal-split"
   },
   "backend": {
-    "imageid": "conjur-impact2021-security-env"
+    "imageid": "conjur-oss-202106"
   }
 }

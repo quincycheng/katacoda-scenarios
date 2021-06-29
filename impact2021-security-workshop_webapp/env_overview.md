@@ -7,23 +7,18 @@ docker ps
 ```{{execute}}
 
 The containers returned should be:
-* conjurinc/cli5
-* mattrayner/lamp
-* cyberark/conjur
-* postgres
-
-_NOTE: cyberark/conjur and postgres are combined into the same appliance container for Conjur Enterprise._
+* cybr-cli
+* lamp
+* conjur
 
 Let's break down each container's purpose for this scenario.
 
-# conjurinc/cli5
-The CyberArk CLI for Conjur is installed within the container named `root_client_1`.  It has been pre-configured to connect to the Conjur service available in the container named `root_conjur_1`.  We will be using this to interact with the Conjur service in this scenario.
-
-To check who you are logged in as, execute the following command: `docker exec root_client_1 conjur authn whoami`{{execute}}
+# cybr-cli
+The cybr-cli is an open source project located at [https://github.com/infamousjoeg/cybr-cli](https://github.com/infamousjoeg/cybr-cli) and written in Go. It is available for Windows, Linux and MacOS + MacOS ARM.  Even though this CLI works with most CyberArk APIs, we'll be using it today to interact with the Conjur API.
 
 Next, let's see what resources in Conjur our user has access to. To do this, execute the following command:
 ```
-docker exec root_client_1 conjur list
+docker exec cybr-cli cybr conjur list
 ```{{execute}}
 
 If everything is authenticated properly, you should have received the following response:
@@ -39,13 +34,16 @@ If everything is authenticated properly, you should have received the following 
 ]
 ```
 
-# cyberark/conjur
-This container is the CyberArk Conjur service. It has been pre-configured for this scenario. As you have already experienced from the last executed command, it is online and available for serving requests.
+The last two secrets are what we'll be working with today to connect our web application to MySQL.
 
-# postgres
-This container is the PostgreSQL database backend that stores the secrets used by the CyberArk Conjur service encrypted.
+To view the value of `db_uname`, execute the following command: `docker exec cybr-cli cybr conjur get-secret -i devapp/db_uname`{{execute}}
 
-# mattrayner/lamp
+To view the value of `db_pass`, execute the following command: `docker exec cybr-cli cybr conjur get-secret -i devapp/db_pass`{{execute}}
+
+# conjur
+This container is the CyberArk Conjur appliance. It has been pre-configured for this scenario. As you have already experienced from the last executed command, it is online and available for serving requests. 
+
+# lamp
 This container is a full LAMP stack. LAMP stands for Linux, Apache, MySQL and PHP. This stack has been pre-configured and is waiting on us to provide a web application in the local `/opt/app` directory.
 
 Let's create a quick index page and add a simple message to it:
