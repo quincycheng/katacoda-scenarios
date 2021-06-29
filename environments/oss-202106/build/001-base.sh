@@ -128,4 +128,30 @@ docker exec lamp mysql -h localhost --port=3306 -uroot \
     -e "CREATE DATABASE conjur_demo;  CREATE USER 'devapp1' IDENTIFIED BY 'Cyberark1'; GRANT ALL PRIVILEGES ON conjur_demo.* TO 'devapp1'; FLUSH PRIVILEGES; USE conjur_demo; CREATE TABLE IF NOT EXISTS conjur_demo.demo (message VARCHAR(255) NOT NULL) ENGINE=MyISAM DEFAULT CHARSET=utf8; INSERT INTO demo (message) VALUES ('If you are seeing this message, we have successfully connected PHP to our backend MySQL database!');"
 
 
+cat <<EOF > /opt/conjur/is_ready.sh
+#!/bin/bash
+
+retry() {
+    local -r -i max_attempts="$1"; shift
+    local -i attempt_num=1
+    until "$@"
+    do
+        if ((attempt_num==max_attempts))
+        then
+            echo "Attempt $attempt_num failed and there are no more attempts left!"
+            return 1
+        else
+            printf "."
+            sleep $((attempt_num++))
+        fi
+    done
+}
+
+echo "Waiting for Conjur to be ready"
+retry 90 docker exec root_client_1 conjur list 2>/dev/null
+echo "Above are the resources preloaded to Conjur.   Environmnet is now ready"
+
+EOF
+chmod +x /opt/conjur/is_ready.sh
+
 echo "End of template 001-base script"
