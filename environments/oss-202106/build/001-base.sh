@@ -21,6 +21,7 @@ apt-get install -y mysql-client-core-5.7 jq
 mkdir -p /opt/conjur/postgres-data
 cd /root
 
+# docker-compose.yml with pre-generated data-key
 cat <<EOF > docker-compose.yml 
 version: '3'
 services:
@@ -35,7 +36,7 @@ services:
     command: server
     environment:
       DATABASE_URL: postgres://postgres@database/postgres
-      CONJUR_DATA_KEY: "${CONJUR_DATA_KEY}"
+      CONJUR_DATA_KEY: "Ym2Jf4A3EwgzlYLiz5txzIplrPXLO3dactjnMjyW7sI="
     depends_on: [ database ]
     ports:
       - "8080:80"
@@ -57,26 +58,22 @@ services:
 EOF
 
 docker-compose pull
-docker-compose run --no-deps --rm conjur data-key generate > data_key
-
-sleep 2s
-cat data_key
-export CONJUR_DATA_KEY="$(< data_key)"
-
-sleep 2s
 docker-compose up -d 
 
 # Wait until conjur container is running
 sleep 1m
 docker-compose logs conjur #for debug
 
+# Remove data key from docker-compose.yml
+sed -i 's/CONJUR_DATA_KEY: "Ym2Jf4A3EwgzlYLiz5txzIplrPXLO3dactjnMjyW7sI="/CONJUR_DATA_KEY:/' docker-compose.yml
+
 
 # Create Conjur Account & Login as Admin 
 docker exec root_conjur_1 conjurctl account create quick-start | tee admin.out
-export conjur_admin="$(grep API admin.out | cut -d: -f2 | tr -d ' \r\n')"
+sleep 2s
 docker exec root_client_1 bash -c "echo yes | conjur init -u http://conjur -a quick-start"
 sleep 2s
-docker exec root_client_1 conjur authn login -u admin -p "${conjur_admin}"
+docker exec root_client_1 conjur authn login -u admin -p "$(grep API admin.out | cut -d: -f2 | tr -d ' \r\n')"
 
 
 # cybr-cli
