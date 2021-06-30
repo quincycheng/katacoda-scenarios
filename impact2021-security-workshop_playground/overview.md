@@ -50,6 +50,6 @@ This container is a full LAMP stack. LAMP stands for Linux, Apache, MySQL and PH
 
 Let's create a quick index page and add a simple message to it:
 
-<pre class="file" data-filename="/opt/app/index.php" data-target="replace">Hello, World!</pre>
+<pre class="file" data-filename="index.php" data-target="replace">Hello, World!</pre>
 
 To view the current website, click the `Web App` tab next to `Terminal`.
