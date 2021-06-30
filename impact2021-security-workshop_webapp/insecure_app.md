@@ -1,7 +1,7 @@
 
 We're going to create a simple PHP webpage that connects to a MySQL database to query and present a message stored in the `conjur_demo` database's `demo` table.
 
-First, we'll create a file inside the `/opt/app` directory. Any file that is located within that directory will be hosted by the LAMP container's Apache service.
+First, we'll create a file inside the `/opt/app` directory. Any file that is located within that directory will be hosted by the LAMP container's Apache service. Luckily, the VS Code instance we'll be using is already set to `/opt/app` as the root directory.
 
 `touch /opt/app/insecure.php`{{execute}}
 
