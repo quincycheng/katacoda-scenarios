@@ -1,5 +1,5 @@
 {
-  "title": "Conjur 101",
+  "title": "Deploy & Test Conjur",
   "description": "Learn how to deploy Conjur OSS & enroll an application.",
   "details": {
     "steps": [
@@ -13,7 +13,8 @@
     "intro": {
       "text": "intro.md",
       "credits": "https://www.conjur.org",
-      "code": "env-init.sh"
+      "courseData": "background.sh",
+      "code": "foreground.sh"
     },
     "finish": {
       "text": "finish.md"
