@@ -1,0 +1,39 @@
+
+Now that we've authenticated and received our session token, it's time to use it to retrieve the secrets we need for our MySQL database connection. We'll need to modify a few of the curl options for the retrieval request. First, let's retrieve the the database username.
+
+<pre class="file" data-filename="secure.php" data-target="append">
+curl_setopt($curl, CURLOPT_URL, 'http://conjur/secrets/quick-start/variable/devapp%2Fdb_uname');
+curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
+curl_setopt($curl, CURLOPT_POSTFIELDS, '');
+$base64_token = 'Authorization: Token token="' . base64_encode($sessionToken) . '"';
+curl_setopt($curl, CURLOPT_HTTPHEADER, $base64_token);
+
+$db_username = curl_exec($curl);
+
+echo 'The database username: ' . $db_username . '<br />';
+</pre>
+
+If you view the Web App, you should now see the Conjur API Session Token and the database username reported now.
+
+Let's retrieve the database password next. Since most of the curl options were set last time, we only need to update the URL.
+
+<pre class="file" data-filename="secure.php" data-target="append">
+curl_setopt($curl, CURLOPT_URL, 'http://conjur/secrets/quick-start/variable/devapp%2Fdb_pass');
+
+$db_password = curl_exec($curl);
+
+echo 'The database password: ' . $db_password . '<br />';
+</pre>
+
+If you view the Web App, you should now see the Conjur API Session Token, the database username and now the database password, as well.
+
+The final piece to this PHP puzzle is authenticating to MySQL and displaying our message. We'll use the two variables holding the values we need to accomplish this.
+
+<pre class="file" data-filename="secure.php" data-target="append">
+$connection = new PDO('mysql:host=localhost;dbname=conjur_demo', $db_username, $db_password);
+$statement = $connection->query('SELECT message FROM demo');
+echo $statement->fetchColumn();
+
+?></pre>
+
+Switching and refreshing or clicking the Web App tab should now display everything from before along with our database message. This source code can now be committed to source control management, such as GitHub, without worry of leaking secrets!

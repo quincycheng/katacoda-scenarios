@@ -15,6 +15,14 @@
       {
         "title": "Hard-Coded Credentials Web App",
         "text": "insecure_app.md"
+      },
+      {
+        "title": "Securing a Web App - Authentication",
+        "text": "secure_app_authn.md"
+      },
+      {
+        "title": "Securing a Web App - Secret Retrieval",
+        "text": "secure_app_retrieve.md"
       }
     ],
     "intro": {
