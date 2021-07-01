@@ -1,12 +1,3 @@
-cat > conjur.bak << EOF
-- !policy
-  id: db
-
-- !policy
-  id: frontend
-EOF
-
-cat > db1.bak << EOF
 # Declare the secrets which are used to access the database
 - &variables
   - !variable password
@@ -22,34 +13,3 @@ cat > db1.bak << EOF
   #   just like read and execute bits on a filesystem.
   privileges: [ read, execute ]
   roles: !group secrets-users
-EOF
-
-cat > db2.bak << EOF
-- &variables
-  - !variable password
-
-- !group secrets-users
-
-- !permit
-  resource: *variables
-  privileges: [ read, execute ]
-  roles: !group secrets-users
-
-# Entitlements
-
-- !grant
-  role: !group secrets-users
-  member: !layer /frontend
-EOF
-
-cat > frontend.bak << EOF
-- !layer
-
-- !host frontend-01
-
-- !grant
-  role: !layer
-  member: !host frontend-01
-EOF
-
-clear
