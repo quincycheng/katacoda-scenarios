@@ -52,4 +52,4 @@ Let's create a quick index page and add a simple message to it:
 
 <pre class="file" data-filename="index.php" data-target="replace">Hello, World!</pre>
 
-To view the current website, click the `Web App` tab next to `Terminal`.
+To view the current website, click the `Web App` tab next to `Terminal`, or click https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/ 
