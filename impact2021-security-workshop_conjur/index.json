@@ -25,6 +25,6 @@
     "uilayout": "editor-terminal"
   },
   "backend": {
-    "imageid": "conjur-docker"
+    "imageid": "conjur-oss-202106"
   }
 }
