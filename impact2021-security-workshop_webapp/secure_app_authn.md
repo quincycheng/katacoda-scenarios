@@ -17,7 +17,7 @@ We'll be using the `curl` method in our webpage. There are other PHP modules ava
 
 Let's initialize curl in our webpage:
 
-<pre class="file" data-filename="secure.php" data-target="replace"><?php
+<pre class="file" data-filename="secure.php" data-target="replace">&lt;?php
 $curl = curl_init();
 </pre>
 
@@ -58,7 +58,7 @@ The variable `$sessionToken` should now contain our Conjur API Session Token. To
 
 <pre class="file" data-filename="secure.php" data-target="append">
 echo 'Conjur API Session Token: ' . $sessionToken . '<br />';
-?>
+?&gt;
 </pre>
 
-Click the "Web App" tab next to "Terminal" and append `/secure.php` to the URL, or click https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/ and check out the results!
+Click the "Web App" tab next to "Terminal" and append `/secure.php` to the URL, or click https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/secure.php and check out the results!
