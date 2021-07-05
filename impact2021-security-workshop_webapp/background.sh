@@ -1,6 +1,8 @@
 #!/bin/bash
 
+
 docker start lamp
+docker network connect root_default lamp
 
 docker kill root_conjur_1
 docker rm root_conjur_1
