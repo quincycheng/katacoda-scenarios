@@ -49,6 +49,6 @@
     "uilayout": "vscode-terminal-split"
   },
   "backend": {
-    "imageid": "conjur-oss-202106"
+    "imageid": "conjur-oss-202107"
   }
 }
