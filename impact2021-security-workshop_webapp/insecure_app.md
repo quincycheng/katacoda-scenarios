@@ -26,7 +26,7 @@ echo $statement->fetchColumn();
 
 Let's see if it worked!
 
-Click the "Web App" tab next to "Terminal" and append `/insecure.php` to the URL, or click https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/ to view the webpage.
+Click the "Web App" tab next to "Terminal" and append `/insecure.php` to the URL, or click https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/insecure.php to view the webpage.
 
 If successful, it should read:
 
