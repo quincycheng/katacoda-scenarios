@@ -113,8 +113,8 @@ docker exec root_client_1 conjur variable values add devapp/db_pass Cyberark1
 
 # Grab Conjur authn info (host identity)
 CONJUR_APPLIANCE_URL=$(docker exec root_client_1 printenv CONJUR_APPLIANCE_URL)
-CONJUR_AUTHN_LOGIN=$(cat demouser.txt | jq -r '.created_roles' | jq -r '.[].id')
-CONJUR_AUTHN_API_KEY=$(cat demouser.txt | jq -r '.created_roles' | jq -r '.[].api_key')
+CONJUR_AUTHN_LOGIN=$(cat /root/demouser.txt | jq -r '.created_roles' | jq -r '.[].id')
+CONJUR_AUTHN_API_KEY=$(cat /root/demouser.txt | jq -r '.created_roles' | jq -r '.[].api_key')
 
 
 # Remove old CLI container
