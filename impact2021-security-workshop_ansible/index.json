@@ -4,27 +4,7 @@
   "icon": "fa-shield-alt",
   "details": {
     "steps": [
-        {
-        "title": "Agenda",
-        "text": "agenda.md"
-      },
-
-       {
-        "title": "Problem Statement",
-        "text": "problem.md"
-      },
-
-       {
-        "title": "The Solution",
-        "text": "solution.md"
-      },
-
-       {
-        "title": "The Goal",
-        "text": "goal.md"
-      },
-
-
+    
       {
         "title": "The Setup",
         "text": "accounts.md"
