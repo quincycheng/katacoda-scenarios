@@ -7,7 +7,7 @@ First, we'll create a file inside the `/opt/app` directory. Any file that is loc
 
 Next, we'll need to authenticate & connect to the MySQL database. Since we don't have access to a secret management service, we'll need to hard code the connection secrets.
 
-<pre class="file" data-filename="insecure.php" data-target="replace"><?php
+<pre class="file" data-filename="insecure.php" data-target="replace">&lt;?php
 $connection = new PDO('mysql:host=localhost;dbname=conjur_demo', 'devapp1', 'Cyberark1');
 </pre>
 
@@ -21,7 +21,7 @@ If all went well, we can now add an `echo` statement to display what the value w
 
 <pre class="file" data-filename="insecure.php" data-target="append">
 echo $statement->fetchColumn();
-?>
+?&gt;
 </pre>
 
 Let's see if it worked!
