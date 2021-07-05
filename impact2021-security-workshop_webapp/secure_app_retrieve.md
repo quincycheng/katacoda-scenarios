@@ -11,7 +11,7 @@ curl_setopt($curl, CURLOPT_HTTPHEADER, $base64_token);
 
 $db_username = curl_exec($curl);
 
-echo 'The database username: ' . $db_username . '<br />';
+echo 'The database username: ' . $db_username . '&lt;br/&gt;';
 ?&gt;
 </pre>
 
@@ -25,7 +25,7 @@ curl_setopt($curl, CURLOPT_URL, 'http://conjur/secrets/quick-start/variable/deva
 
 $db_password = curl_exec($curl);
 
-echo 'The database password: ' . $db_password . '<br />';
+echo 'The database password: ' . $db_password . '&lt;br/&gt;';
 ?&gt;
 </pre>
 
@@ -38,6 +38,7 @@ The final piece to this PHP puzzle is authenticating to MySQL and displaying our
 $connection = new PDO('mysql:host=localhost;dbname=conjur_demo', $db_username, $db_password);
 $statement = $connection->query('SELECT message FROM demo');
 echo $statement->fetchColumn();
+echo '&lt;br/&gt;';
 ?&gt;
 </pre>
 
