@@ -18,12 +18,13 @@ We'll be using the `curl` method in our webpage. There are other PHP modules ava
 Let's initialize curl in our webpage:
 
 <pre class="file" data-filename="secure.php" data-target="replace"><?php
-
-$curl = curl_init();</pre>
+$curl = curl_init();
+</pre>
 
 Next, we need to create an array, which is a collection of variables, to set our curl options:
 
-<pre class="file" data-filename="secure.php" data-target="append">curl_setopt_array($curl, array(
+<pre class="file" data-filename="secure.php" data-target="append">
+curl_setopt_array($curl, array(
     CURLOPT_URL => 'http://conjur/authn/quick-start/'. getenv("CONJUR_AUTHN_LOGIN") . '/authenticate',
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => '',
@@ -42,7 +43,7 @@ Next, we need to create an array, which is a collection of variables, to set our
 ));
 </pre>
 
-Above, you'll notice two environment variables being referenced.
+Above, you will notice two environment variables being referenced.
 
 * `getenv("CONJUR_AUTHN_LOGIN")`
 * `getenv("CONJUR_AUTHN_API_KEY")`
@@ -55,7 +56,9 @@ $sessionToken = curl_exec($curl);
 
 The variable `$sessionToken` should now contain our Conjur API Session Token. To check this, for the purpose of this scenario, we'll `echo` it out for us to view.
 
-<pre class="file" data-filename="secure.php" data-target="append">echo 'Conjur API Session Token: ' . $sessionToken . '<br />';
+<pre class="file" data-filename="secure.php" data-target="append">
+echo 'Conjur API Session Token: ' . $sessionToken . '<br />';
+?>
 </pre>
 
-Click on the Web App tab and check out the results!
+Click the "Web App" tab next to "Terminal" and append `/secure.php` to the URL, or click https://[[HOST_SUBDOMAIN]]-80-[[KATACODA_HOST]].environments.katacoda.com/ and check out the results!
