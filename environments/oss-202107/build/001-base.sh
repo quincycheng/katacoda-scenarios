@@ -148,4 +148,11 @@ EOF
 
 chmod +x /opt/conjur/is_ready.sh
 
+# Pull images for quick-start
+cd /opt
+git clone https://github.com/cyberark/conjur-quickstart.git
+cd /opt/conjur-quickstart
+docker-compose pull
+
+
 echo "End of oss-202107"
