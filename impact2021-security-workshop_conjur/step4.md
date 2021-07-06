@@ -29,7 +29,7 @@ Note: You can create this file, either by clicking above "Copy to Editor" or exe
 Now load it using the following command:
 
 ```
-docker cp /root/db.yml root_client_1:db.yml
+docker cp /root/db.yml conjur_client:db.yml
 docker-compose exec client conjur policy load db db.yml
 ```{{execute}}
 
