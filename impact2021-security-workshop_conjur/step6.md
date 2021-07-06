@@ -11,7 +11,7 @@ export frontend_api=$(tail -n +2 frontend.out | jq -r '.created_roles."quick-sta
 docker exec \
   -e CONJUR_AUTHN_LOGIN=host/frontend/frontend-01 \
   -e CONJUR_AUTHN_API_KEY=$frontend_api \
-   root_client_1 \
+   conjur_client \
   conjur variable value db/password
 ```{{execute}}
 ```
