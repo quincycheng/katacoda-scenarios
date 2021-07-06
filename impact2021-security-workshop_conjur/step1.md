@@ -2,7 +2,10 @@
 # Download Configuration
 In your terminal, download the Conjur quick-start configuration:
 
-`curl -o docker-compose.yml https://quincycheng.github.io/docker-compose.quickstart.yml`{{execute}}
+```
+git clone https://github.com/cyberark/conjur-quickstart.git
+cd conjur-quickstart
+```{{execute}}
 
 # Pull Image
 Pull all the required Docker images from DockerHub.
