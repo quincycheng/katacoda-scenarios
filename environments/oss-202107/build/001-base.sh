@@ -94,7 +94,6 @@ git clone https://github.com/infamousjoeg/katacoda-scenarios.git
 mkdir /opt/policies/
 cp katacoda-scenarios/impact2021-security-workshop_webapp/assets/* /opt/policies
 
-
 # Copy & load root.yml policy file
 docker exec root_client_1 mkdir /policies/
 docker cp /opt/policies/root.yml root_client_1:/policies/
