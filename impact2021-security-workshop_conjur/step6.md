@@ -60,7 +60,7 @@ Note: You can create this file, either by clicking above "Copy to Editor" or exe
 Then load it using the CLI:
 
 ```
-docker cp /root/db.yml root_client_1:db.yml
+docker cp /root/db.yml conjur_client:db.yml
 docker-compose exec client conjur policy load db db.yml
 ```{{execute}}
 
@@ -104,7 +104,7 @@ Now we can finish the tutorial by fetching the password while authenticated as t
 docker exec \
   -e CONJUR_AUTHN_LOGIN=host/frontend/frontend-01 \
   -e CONJUR_AUTHN_API_KEY=$frontend_api \
-   root_client_1 \
+   conjur_client \
   conjur variable value db/password
 ```{{execute}}
 `926c6e5622889763c9490ca3` <- Password printed here.
@@ -131,7 +131,7 @@ Let's verify it by adding a new vault using frontend-01
 docker exec \
   -e CONJUR_AUTHN_LOGIN=host/frontend/frontend-01 \
   -e CONJUR_AUTHN_API_KEY=$frontend_api \
-   root_client_1 \
+   conjur_client \
    conjur variable values add db/password $(openssl rand -hex 12)
 ```{{execute}}
 
