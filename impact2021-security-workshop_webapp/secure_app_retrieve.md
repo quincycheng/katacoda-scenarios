@@ -10,7 +10,6 @@ curl_setopt($curl, CURLOPT_HTTPHEADER, $headr);
 curl_setopt($curl, CURLOPT_URL, 'http://conjur/secrets/quick-start/variable/devapp%2Fdb_uname');
 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
 $db_username = curl_exec($curl);
-
 echo 'The database username: ' . $db_username . '&lt;br/&gt;';
 ?&gt;
 </pre>
@@ -22,9 +21,7 @@ Let's retrieve the database password next. Since most of the curl options were s
 <pre class="file" data-filename="secure.php" data-target="append">
 &lt;?php
 curl_setopt($curl, CURLOPT_URL, 'http://conjur/secrets/quick-start/variable/devapp%2Fdb_pass');
-
 $db_password = curl_exec($curl);
-
 echo 'The database password: ' . $db_password . '&lt;br/&gt;';
 ?&gt;
 </pre>
