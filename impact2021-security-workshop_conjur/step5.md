@@ -10,7 +10,7 @@ For this example, the “frontend” policy will simply define a Layer and a Hos
   member: !host frontend-01
 </pre>
 
-Note: You can create this file, either by clicking above "Copy to Editor" or executing `cp frontend.bak frontend.yml`{{execute}}
+Note: You can create this file, either by clicking above "Copy to Editor" or executing `cp /root/frontend.bak /root/frontend.yml`{{execute}}
 
 > **Note** Statically defining the hosts in a policy is appropriate for fairly static infrastructure. More dynamic systems such as auto-scaling groups and containerized deployments can be managed with Conjur as well. The details of these topics are covered elsewhere.
 
@@ -18,7 +18,7 @@ Now load the frontend policy using the following command:
 
 
 ```
-docker cp frontend.yml root_client_1:frontend.yml
+docker cp /root/frontend.yml root_client_1:frontend.yml
 docker-compose exec client conjur policy load frontend frontend.yml | tee frontend.out
 ```{{execute}}
 
