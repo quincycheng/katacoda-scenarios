@@ -24,12 +24,12 @@ These are normally granted together, but they are distinct just like read and ex
 </pre>
 
 
-Note: You can create this file, either by clicking above "Copy to Editor" or executing `cp db1.bak db.yml`{{execute}}
+Note: You can create this file, either by clicking above "Copy to Editor" or executing `cp /root/db1.bak /root/db.yml`{{execute}}
 
 Now load it using the following command:
 
 ```
-docker cp ./db.yml root_client_1:db.yml
+docker cp /root/db.yml root_client_1:db.yml
 docker-compose exec client conjur policy load db db.yml
 ```{{execute}}
 
