@@ -34,7 +34,6 @@ Next, we need to create an array, which is a collection of variables, to set our
 curl_setopt_array($curl, array(
     CURLOPT_URL => 'http://conjur/authn/quick-start/demouser/authenticate',
     CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => '',
     CURLOPT_CUSTOMREQUEST => 'POST',
     CURLOPT_MAXREDIRS => 10,
     CURLOPT_TIMEOUT => 0,
@@ -42,7 +41,7 @@ curl_setopt_array($curl, array(
     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
     CURLOPT_SSL_VERIFYPEER => false,
     CURLOPT_SSL_VERIFYHOST => false,
-    CURLOPT_POSTFIELDS => getenv("CONJUR_AUTHN_API_KEY"),
+    CURLOPT_POSTFIELDS =>$refresh_token,
     CURLOPT_HTTPHEADER => array(
         'Accept-Encoding: base64',
         'Content-Type: application/json'
