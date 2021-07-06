@@ -3,12 +3,12 @@ Now that we've authenticated and received our session token, it's time to use it
 
 <pre class="file" data-filename="secure.php" data-target="append">
 &lt;?php
+$headr = array();
+$headr[] = 'Authorization: Token token="' . $sessionToken . '"';
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headr);
+
 curl_setopt($curl, CURLOPT_URL, 'http://conjur/secrets/quick-start/variable/devapp%2Fdb_uname');
 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
-curl_setopt($curl, CURLOPT_POSTFIELDS, '');
-$base64_token = 'Authorization: Token token="' . base64_encode($sessionToken) . '"';
-curl_setopt($curl, CURLOPT_HTTPHEADER, $base64_token);
-
 $db_username = curl_exec($curl);
 
 echo 'The database username: ' . $db_username . '&lt;br/&gt;';
