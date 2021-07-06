@@ -116,6 +116,8 @@ CONJUR_APPLIANCE_URL=$(docker exec root_client_1 printenv CONJUR_APPLIANCE_URL)
 CONJUR_AUTHN_LOGIN=$(cat /root/demouser.txt | jq -r '.created_roles' | jq -r '.[].id')
 CONJUR_AUTHN_API_KEY=$(cat /root/demouser.txt | jq -r '.created_roles' | jq -r '.[].api_key')
 
+# Replace the quick-start:user:demouser with demouser
+CONJUR_AUTHN_LOGIN=demouser
 
 # Remove old CLI container
 #docker rm -f root_client_1
