@@ -15,9 +15,9 @@ docker exec \
   conjur variable value db/password
 ```{{execute}}
 ```
-error: 403 Forbidden
+error: 404 Not Found
 ```
-Is the “error: 403 Forbidden” a mistake? No, it’s demonstrating that the host is able to authenticate, but it’s not permitted to fetch the secret.
+Is the “error: 404 Not Found” a mistake? No, it’s demonstrating that the host is able to authenticate, but it’s not permitted to fetch the secret.
 
 What’s needed is an entitlement to grant group:db/secrets-users to layer:frontend. You can verify that this role grant does not yet exist by listing the members of the role group:db/secrets-users:
 
