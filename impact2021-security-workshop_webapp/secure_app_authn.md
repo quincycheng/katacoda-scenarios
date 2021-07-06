@@ -20,7 +20,7 @@ Let's initialize curl in our webpage:
 <pre class="file" data-filename="secure.php" data-target="replace">&lt;?php
 curl_setopt(CURLOPT_RETURNTRANSFER, true);
 $ch = curl_init('http://conjur/authn/quick-start/login');
-curl_setopt($ch, CURLOPT_USERPWD, getenv("CONJUR_AUTHN_LOGIN") . getenv("CONJUR_AUTHN_API_KEY"));
+curl_setopt($ch, CURLOPT_USERPWD, getenv("CONJUR_AUTHN_LOGIN").":". getenv("CONJUR_AUTHN_API_KEY"));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 $refresh_token = curl_exec($ch);
 curl_close($ch);
@@ -32,7 +32,7 @@ Next, we need to create an array, which is a collection of variables, to set our
 
 <pre class="file" data-filename="secure.php" data-target="append">
 curl_setopt_array($curl, array(
-    CURLOPT_URL => 'http://conjur/authn/quick-start/'. getenv("CONJUR_AUTHN_LOGIN") . '/authenticate',
+    CURLOPT_URL => 'http://conjur/authn/quick-start/demouser/authenticate',
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => '',
     CURLOPT_CUSTOMREQUEST => 'POST',
