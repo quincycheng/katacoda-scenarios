@@ -55,12 +55,12 @@ Add the role grant by updating policy “db.yml” to the following:
   member: !layer /frontend
 </pre>
 
-Note: You can create this file, either by clicking above "Copy to Editor" or executing `cp db2.bak db.yml`{{execute}}
+Note: You can create this file, either by clicking above "Copy to Editor" or executing `cp /root/db2.bak /root/db.yml`{{execute}}
 
 Then load it using the CLI:
 
 ```
-docker cp db.yml root_client_1:db.yml
+docker cp /root/db.yml root_client_1:db.yml
 docker-compose exec client conjur policy load db db.yml
 ```{{execute}}
 
